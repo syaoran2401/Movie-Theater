@@ -1,0 +1,98 @@
+.slick-prev:before,
+.slick-next:before {
+    color: gray;
+    font-size: 35px;
+}
+
+.MultipleRowStick_slick-prev__1C81C {
+    left: -70px !important;
+}
+.MultipleRowStick_slick-next__T2Euu {
+    right: -50px !important;
+}
+
+.MultipleRowStick_width-item__p20FO {
+    height: 400px;
+    padding: 0 20px;
+}
+
+.MultipleRowStick_slick-prev__1C81C,
+.MultipleRowStick_slick-next__T2Euu {
+    top: 40% !important;
+}
+
+.activeMovie button {
+    font-size: 1.5rem;
+    outline: none;
+}
+
+.activeMovie:after {
+    content: "";
+    width: 0px;
+    height: 3px;
+    left: 0;
+    background: linear-gradient(to right, #fbbd61, #ec7532);
+    position: absolute;
+    transition: all 1s;
+    bottom: -10px;
+}
+
+.activeMovie:hover:after {
+    width: 180px;
+}
+
+.bookingLink {
+    @apply text-base text-red-500 text-left mt-4;
+}
+
+.bookingLink span{
+    display: inline-block;
+    animation: wave-text 1s ease-in-out infinite;
+
+}
+
+.bookingLink span:first-child {
+    animation-delay: 0s;
+}
+.bookingLink span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.bookingLink span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.bookingLink span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+.bookingLink span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+.bookingLink span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+.bookingLink span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+.bookingLink span:nth-child(8) {
+    animation-delay: 0.7s;
+}
+.bookingLink span:nth-child(9) {
+    animation-delay: 0.8s;
+}
+.bookingLink span:nth-child(10) {
+    animation-delay: 0.9s;
+}
+.bookingLink span:nth-child(11) {
+    animation-delay: 1s;
+}
+
+@keyframes wave-text {
+    0% {
+        transform: translateY(0em);
+    }
+    60% {
+        transform: translateY(-0.1em);
+    }
+    100% {
+        transform: translateY(0em);
+    }
+}

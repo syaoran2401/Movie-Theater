@@ -1,0 +1,23 @@
+/* .customCarousel .ant-carousel .slick-dots li:nth-child(2){
+    padding: 0 5px !important;
+}
+
+.customCarousel .ant-carousel .slick-dots li{}
+
+.customCarousel .ant-carousel .slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    color: white;    
+    border: 5px solid white;
+}
+
+.customCarousel .ant-carousel .slick-dots li.slick-active {
+    width: unset;
+} */
+
+
+.slick-dots-bottom{
+    margin: 0 !important;
+    padding: 0 !important;
+}

@@ -1,0 +1,44 @@
+/* ghế thường */
+.ghe {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 15px;
+  background-color: rgba(123, 122, 122);
+  color: #fff;
+}
+
+/* Ghế đã đặt */
+
+.gheDaDat {
+  background-color: rgb(232, 76, 76);
+  cursor: no-drop;
+}
+
+/* Ghế đang đặt */
+.gheDangDat {
+  background-color: rgb(20, 179, 20) !important;
+}
+
+/* Ghế VIP */
+.gheVip {
+  background-color: rgb(228, 74, 8);
+}
+
+/* Ghế được chính mình đặt */
+.gheDaDuocDat {
+  background-color: rgba(255, 255, 255, 0.739);
+  box-shadow: 2px 2px 21px 8px orange;
+  color: orange !important;
+  border: 1px solid black;
+}
+
+
+/* Ghế khách đang đặt */
+.gheKhachDangDat {
+  background-color:rgb(119, 25, 242) !important;
+  cursor: no-drop;
+
+}

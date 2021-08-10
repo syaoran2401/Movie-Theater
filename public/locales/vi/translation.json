@@ -1,0 +1,11 @@
+{
+    "hello": "Xin Chào",
+    "SIGN IN":{
+        "1":"Đăng Ký",
+        "2":"登入"
+    },
+    "REGISTER":"Đăng Ký",
+    "CONTACT":"Liên Hệ",
+    "HOME": "Trang Chủ",
+    "COMING MOVIE":"Sắp Chiếu"
+}

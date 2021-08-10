@@ -14,6 +14,7 @@ import Checkout from './pages/Checkout/Checkout';
 import CheckoutTemplate from './templates/CheckoutTemplate/CheckoutTemplate'
 import UserTemplate from './templates/UserTemplate/UserTemplate';
 import Loading from './components/Loading/Loading';
+import Profile from './pages/Profile/Profile';
 // import { Suspense, lazy } from 'react'  // Lazy loading ( thư viên react )
 
 // const CheckoutTemplateLazy = lazy(() => import('./templates/CheckoutTemplate/CheckoutTemplate'))
@@ -39,7 +40,8 @@ function App() {
         </Suspense> */}
 
         <UserTemplate exact path='/login' Component={Login} />
-        <Route exact path='/register' component={Register} />
+        <UserTemplate exact path='/register' Component={Register} />
+        <HomeTemplate exact path='/profile' Component={Profile} />
       </Switch>
     </Router>
 

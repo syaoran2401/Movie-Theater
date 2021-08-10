@@ -1,0 +1,11 @@
+{
+    "hello": "你好",
+    "SIGN IN":{
+        "1":"登录",
+        "2":"登入"
+    },
+    "HOME":"首页",
+    "REGISTER":"注册",
+    "CONTACT":"联系",
+    "COMING MOVIE":"即将上映"
+}

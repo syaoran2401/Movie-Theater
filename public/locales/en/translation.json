@@ -1,0 +1,11 @@
+{
+    "hello": "hello",
+    "SIGN IN":{
+        "1":"SiGN IN",
+        "2":"登入"
+    },
+    "REGISTER":"REGISTER",
+    "CONTACT":"CONTACT",
+    "HOME": "HOME",
+    "COMING MOVIE":"COMING MOVIE"
+}

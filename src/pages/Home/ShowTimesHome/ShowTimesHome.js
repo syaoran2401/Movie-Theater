@@ -82,7 +82,7 @@ export default function ShowTimesHome(props) {
 
     const renderShowTime = (filmShowTime, maPhim) => {
         return filmShowTime.slice(0, 10).map((timeSchedule, index) => {
-            return <NavLink key={index} className='buttonNavLink' to={`/movieDetail/${maPhim}`}>
+            return <NavLink key={index} className='buttonNavLink' to={`/checkout/${filmShowTime.maLichChieu}`}>
                 {moment(timeSchedule.ngayChieuGioChieu).format('hh:mm A')}
             </NavLink>
         })

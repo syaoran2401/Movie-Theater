@@ -9,8 +9,8 @@ import { store } from './redux/configStore';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { DOMAIN } from './util/Settings/config';
-import * as signalR from '@aspnet/signalr'
-
+import * as signalR from '@aspnet/signalr';
+import './i18next';
 // 1/: cài đặt thiết lập signalR(index.js);
 // 2/ Cài đặt lắng nghe sự kiện(checkout.js);
 // 3/ Cài dặt nút đặt vé => gửi tín hiệu đên server => server phát tính hiệu về cho tất cả client (ở bước 2)

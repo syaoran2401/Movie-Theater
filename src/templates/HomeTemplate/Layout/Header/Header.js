@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import _ from "lodash";
 import { Fragment } from 'react';
+import { TOKEN, USER_LOGIN } from '../../../../util/Settings/config';
+import { history } from '../../../../App';
 
 const { Option } = Select;
 
@@ -34,9 +36,24 @@ export default function Header() {
             </Fragment>
         }
 
+
+
         return <>
-            <li className="flex relative navLink">
-                <NavLink to='/profile' className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600 text-white font-bold hover:text-white">Hello: {userLoginInfo.taiKhoan}</NavLink>
+            <li className="flex relative">
+                <NavLink
+                    to='/profile'
+                    className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600 text-white font-bold hover:text-white">Hello: {userLoginInfo.taiKhoan}</NavLink>
+            </li>
+            <li className="flex relative">
+                <NavLink
+                    to='/register'
+                    className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-yellow-400 border-violet-600  font-bold hover:text-red-500"
+                    onClick={() => {
+                        localStorage.removeItem(USER_LOGIN);
+                        localStorage.removeItem(TOKEN);
+                        history.push('/home');
+                        window.location.reload();
+                    }}>{t("SIGN OUT")}</NavLink>
             </li>
         </>
     }
@@ -44,8 +61,9 @@ export default function Header() {
     return (
         <div>
             <header className="p-4  bg-black text-white fixed w-full z-50 bg-opacity-50">
-                <div className="container flex justify-between align-items-center h-16 mx-auto">
-                    <NavLink to="/" aria-label="Back to homepage" className="flex items-center p-2">
+                <div className="flex justify-between align-items-center h-16 mx-auto">
+                    <NavLink to="/" aria-label="Back to homepage"
+                        className="flex items-center pl-5 ml-5">
                         <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="cyberLearn.vn" />
                     </NavLink>
                     <ul className="items-stretch hidden space-x-3 lg:flex">

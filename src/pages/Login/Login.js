@@ -61,7 +61,7 @@ export default function Login() {
                                     </a>
                                 </div>
                             </div>
-                            <input name='matKhau' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"  placeholder="Enter your password ...."  onChange={formik.handleChange}/>
+                            <input type="password" name='matKhau' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"  placeholder="Enter your password ...."  onChange={formik.handleChange}/>
                         </div>
                         <div className="mt-10">
                             <button type='submit' className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide

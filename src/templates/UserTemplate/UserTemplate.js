@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router'
 
 export default function UserTemplate({ Component, ...resProps }) {
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
 
     return (
         <Route {...resProps} render={(propsRoute) => {

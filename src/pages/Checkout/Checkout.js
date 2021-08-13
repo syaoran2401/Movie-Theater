@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bookingSeatAction, bookTicketAction, getBookingTicketAction } from '../../redux/action/BookingTicketAction';
 import style from './Checkout.module.css'
 import './Checkout.css'
-import { CloseOutlined, UserOutlined, CheckOutlined, SyncOutlined } from '@ant-design/icons';
-import { BOOKING_CHAIR, CHANGE_TAB_ACTIVE } from '../../redux/types/TicketType';
+import { CloseOutlined, UserOutlined, CheckOutlined, SyncOutlined, HomeOutlined } from '@ant-design/icons';
+import { CHANGE_TAB_ACTIVE } from '../../redux/types/TicketType';
 import _ from 'lodash'
 import { BookTicketInfo } from '../../_core/models/BookTicket';
 
-import { Tabs, Pagination } from 'antd';
+import { Tabs } from 'antd';
 import { getUserInfo } from '../../redux/action/UserManagementAction';
 import moment from 'moment';
 import { connection } from '../..';
+import { history } from '../../App';
+import { TOKEN, USER_LOGIN } from '../../util/Settings/config';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -83,7 +86,7 @@ function Checkout(props) {
 
 
         // Có 1 client nào thực hiện việc đặt vé thành công, mình sẽ load lại danh sách phòng vé của lịch chiếu đó
-        connection.on('datVeThanhCong', () =>{
+        connection.on('datVeThanhCong', () => {
             dispatch(getBookingTicketAction(props.match.params.maLichChieu));
 
         })
@@ -101,35 +104,35 @@ function Checkout(props) {
             dsGheKhachDat = dsGheKhachDat.filter(item => item.taiKhoan !== userLoginInfo.taiKhoan);
 
             // Bước 2: gộp danh sách ghế khách đặt ở tất cả user thành 1 mảng chung
-            let arrGheKhachDat = dsGheKhachDat.reduce((result, item, index) =>{
+            let arrGheKhachDat = dsGheKhachDat.reduce((result, item, index) => {
                 let arrGhe = JSON.parse(item.danhSachGhe);
                 return [...result, ...arrGhe]
-            },[]);
+            }, []);
 
             // Đưa dư liệu ghế khách đặt cập nhật redux
             arrGheKhachDat = _.uniqBy(arrGheKhachDat, 'maGhe');
 
             // đưa dữ liệu về redux (bookingTicketReducer)
             dispatch({
-                type:"DAT_GHE_REALTIME",
+                type: "DAT_GHE_REALTIME",
                 arrGheKhachDat
             })
 
-            console.log('arrGheKhachDat',arrGheKhachDat)
+            console.log('arrGheKhachDat', arrGheKhachDat)
         })
 
 
         // Cài đặt sự kiện khi reload trang
-        window.addEventListener("beforeunload",clearGhe);
+        window.addEventListener("beforeunload", clearGhe);
 
-        return () =>{
+        return () => {
             clearGhe();
-            window.removeEventListener('beforeunload',clearGhe)
+            window.removeEventListener('beforeunload', clearGhe)
         }
 
     }, []);
 
-    const clearGhe = event =>{
+    const clearGhe = event => {
         connection.invoke('huyDat', userLoginInfo.taiKhoan, props.match.params.maLichChieu);
     }
 
@@ -231,21 +234,74 @@ const { TabPane } = Tabs;
 
 // }
 
-export default function Demo(props) {
-    const dispatch = useDispatch()
+export default function CheckoutTab(props) {
+    const dispatch = useDispatch();
     const { tabActive } = useSelector(state => state.BookingTicketReducer);
-    return <div className='p-5'>
-        <Tabs defaultActiveKey={'1'} activeKey={tabActive} onChange={(key) => {
+
+    const { userLoginInfo } = useSelector(state => state.UserManagementReducer);
+
+    useEffect(() => {
+        return () =>{
             dispatch({
                 type: CHANGE_TAB_ACTIVE,
-                number: key
+                number: "1"
             })
-        }}>
+        }
+    },[])
+
+    console.log("🚀 ~ file: Checkout.js ~ line 242 ~ CheckoutTab ~ userLoginInfo", userLoginInfo)
+
+    const operations = <Fragment>
+        {!_.isEmpty(userLoginInfo) ?
+            <Fragment>
+                <button
+                    style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+                    onClick={() => {
+                        history.push('/profile')
+                    }}>
+                    <div
+                        style={{ width: '50px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.4rem' }}
+                        className='rounded-full bg-red-200 mx-auto'>
+                        {userLoginInfo.taiKhoan.substr(0, 1)}
+                    </div>
+                    Hello! {userLoginInfo.taiKhoan}
+                </button>
+                <button
+                    style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+                    onClick={() => {
+                        localStorage.removeItem(USER_LOGIN);
+                        localStorage.removeItem(TOKEN);
+                        history.push('/home');
+                        window.location.reload();
+                    }}>Sign Out</button>
+            </Fragment>
+            :
+            ""}
+    </Fragment>
+
+
+    return <div className='p-5'>
+        <Tabs tabBarExtraContent={operations}
+            defaultActiveKey={'1'}
+            activeKey={tabActive}
+            onChange={(key) => {
+                dispatch({
+                    type: CHANGE_TAB_ACTIVE,
+                    number: key
+                })
+            }}>
             <TabPane tab="01 CHỌN GHẾ & THANH TOÁN" key="1" >
                 <Checkout {...props} />
             </TabPane>
             <TabPane tab="02 KẾT QUẢ ĐẶT VÉ" key="2" >
                 <KetQuaDatVe {...props} />
+            </TabPane>
+            <TabPane tab={
+                <div>
+                    <NavLink to={'/'} ><HomeOutlined style={{ fontSize: '1.5rem', marginLeft: '15px' }} /></NavLink>
+                </div>
+            } key="3" >
+
             </TabPane>
 
         </Tabs>

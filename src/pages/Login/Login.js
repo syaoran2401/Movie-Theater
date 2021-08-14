@@ -8,8 +8,8 @@ import { loginAction } from '../../redux/action/UserManagementAction';
 export default function Login() {
 
     const dispatch = useDispatch();
-    const {userLoginInfo} = useSelector(state => state.UserManagementReducer);
-    console.log({userLoginInfo})
+    const { userLoginInfo } = useSelector(state => state.UserManagementReducer);
+    console.log({ userLoginInfo })
     const formik = useFormik({
         initialValues: {
             taiKhoan: '',
@@ -17,14 +17,14 @@ export default function Login() {
         },
         onSubmit: values => {
             console.log('values', values)
-  
+
             dispatch(loginAction(values))
         },
     });
 
 
     return (
-        <form className="lg:w-1/2 xl:max-w-screen-sm" onSubmit={formik.handleSubmit}>
+        <form className="lg:w-1/2 xl:max-w-screen-sm"  onSubmit={formik.handleSubmit}>
             <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
                 <div className="cursor-pointer flex items-center">
                     <div>
@@ -47,32 +47,37 @@ export default function Login() {
                     <div>
                         <div>
                             <div className="text-sm font-bold text-gray-700 tracking-wide">Account:</div>
-                            <input name='taiKhoan' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"  placeholder="Enter you account ...." onChange={formik.handleChange} />
+                            <input name='taiKhoan' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter you account ...." onChange={formik.handleChange} />
                         </div>
                         <div className="mt-8">
                             <div className="flex justify-between items-center">
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">
                                     Password:
                                 </div>
-                                <div>
+                                {/* <div>
                                     <a className="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
-                          cursor-pointer">
+                                     cursor-pointer">
                                         Forgot Password?
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
-                            <input type="password" name='matKhau' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"  placeholder="Enter your password ...."  onChange={formik.handleChange}/>
+                            <input type="password" name='matKhau' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter your password ...." onChange={formik.handleChange} />
                         </div>
                         <div className="mt-10">
-                            <button type='submit' className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                  font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                  shadow-lg">
-                                Log In
+                            <button
+                                type='submit'
+                                className="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                                shadow-lg">
+                                        Log In
                             </button>
                         </div>
+                        <div className="mt-3 text-center">
+                            <NavLink to="/home" className='text-gray-700 hover:text-gray-700'>Back to Home</NavLink>
+                        </div>
                     </div>
-                    <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                        Don't have an account ?<NavLink to='/signUp' className="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</NavLink>
+                    <div className="mt-10 text-sm font-display font-semibold text-gray-700 text-center">
+                        Don't have an account ? Sign up<NavLink to='/register' className="cursor-pointer text-indigo-600 hover:text-indigo-800"> <span className='text-red-600'>HERE</span></NavLink>
                     </div>
                 </div>
             </div>

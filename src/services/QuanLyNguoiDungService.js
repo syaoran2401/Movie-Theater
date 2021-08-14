@@ -6,6 +6,10 @@ export class QuanLyNguoiDungService extends BaseService{
         return this.post('api/QuanLyNguoiDung/DangNhap', loginInfo);
     }
 
+    registAccount = (userSignUpInfo) =>{
+        return this.post(`api/QuanLyNguoiDung/DangKy`, userSignUpInfo)
+    }
+
     getUserInfo = () =>{
         return this.post(`api/QuanLyNguoiDung/ThongTinTaiKhoan`)
     }

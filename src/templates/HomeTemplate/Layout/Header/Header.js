@@ -80,7 +80,11 @@ export default function Header() {
 
 
                         {renderLogin()}
-                        <Select defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
+
+                        <Select 
+                        defaultValue="en" 
+                        style={{ width: 100 , display: 'flex', alignItems: 'center'}}
+                         onChange={handleChange}>
                             <Option value="en">Eng</Option>
                             <Option value="chi">Chi</Option>
                             <Option value="vi">Vi</Option>

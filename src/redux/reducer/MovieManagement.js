@@ -31,7 +31,7 @@ const initialState = {
             "sapChieu": true
         }
     ],
-    arrMovieDefaul:[],
+    arrMovieDefault:[],
     dangChieu: true,
     sapChieu: true,
     movieDetail:{}
@@ -43,13 +43,13 @@ const MovieManagement = (state = initialState, action) => {
         case GET_LIST_MOVIE:
             const { arrMovie } = action;
             state.arrMovie  = arrMovie;
-            state.arrMovieDefaul = state.arrMovie;
+            state.arrMovieDefault = state.arrMovie;
             return { ...state}
 
         case GET_SHOWING_MOVIE: {
         
             state.dangChieu = !state.dangChieu
-            state.arrMovie = state.arrMovieDefaul.filter(movie => movie.dangChieu === state.dangChieu);
+            state.arrMovie = state.arrMovieDefault.filter(movie => movie.dangChieu === state.dangChieu);
             console.log('dang chieu', state.arrMovie)
             return { ...state  }
         }
@@ -57,7 +57,7 @@ const MovieManagement = (state = initialState, action) => {
         case GET_COMING_MOVIE: {
           
             state.sapChieu = !state.sapChieu
-            state.arrMovie = state.arrMovieDefaul.filter(movie => movie.sapChieu === state.sapChieu);
+            state.arrMovie = state.arrMovieDefault.filter(movie => movie.sapChieu === state.sapChieu);
             console.log('sap chieu', state.arrMovie)
             return { ...state }
         }

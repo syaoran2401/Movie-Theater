@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useFormik, withFormik } from 'formik';
-import { formatTimeStr } from 'antd/lib/statistic/utils';
+import { withFormik } from 'formik';
 import { connect } from 'react-redux';
 import * as Yup from 'yup'
 import { registerAction } from '../../redux/action/UserManagementAction';
@@ -9,57 +8,11 @@ import { registerAction } from '../../redux/action/UserManagementAction';
 function Register(props) {
 
     const {
-        values,
-        touched,
         errors,
         handleChange,
-        handleBlur,
         handleSubmit,
     } = props;
 
-    // const formik = useFormik({
-    //     initialValues: {
-    //         taiKhoan: "",
-    //         matKhau: "",
-    //         email: "",
-    //         soDt: "",
-    //         hoTen: ""
-    //     },
-    //     onSubmit: values => {
-
-
-    //         let valid = null;
-
-
-    //         // for(const [key, value] of Object.entries(values)) {
-    //         //     console.log(key, value);
-    //         //     if(key === "matKhau"){
-    //         //         console.log(key[value])
-    //         //     }
-    //         // }
-
-
-    //         for(let key in values){
-    //             if(key === "matKhau"){
-    //                 console.log(values[key])
-    //                 if(values[key] === values.confirmPassword){
-    //                     valid = true
-    //                 }else{
-    //                     valid = false
-    //                 }
-    //             }
-
-
-    //         }
-
-    //         console.log('valid', valid)
-
-
-
-    //         console.log("🚀 ~ file: Register.js ~ line 14 ~ Register ~ values", values)
-
-    //     },
-    // })
 
 
     return (
@@ -243,7 +196,6 @@ const RegisterForm = withFormik({
 
         if (valid) {
             props.dispatch(registerAction(values))
-
         }
     },
 })(Register)

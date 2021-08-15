@@ -2,7 +2,7 @@
 import moment from 'moment';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovieDetail } from '../../redux/action/MovieAction';
+import { getMovieDetailAction } from '../../redux/action/MovieAction';
 import './movieDetail.css'
 import { Tabs,Rate } from 'antd';
 import { CustomCard } from '@tsamantanis/react-glassmorphism'
@@ -21,7 +21,7 @@ export default function MovieDetail(props) {
     console.log({ movieDetail });
 
     useEffect(() => {
-        dispatch(getMovieDetail(maPhim));
+        dispatch(getMovieDetailAction(maPhim));
     }, [])
 
 

@@ -2,7 +2,7 @@
 import { quanlyPhimService } from '../../services/QuanLyPhimService'
 import { GET_LIST_MOVIE, GET_MOVIE_DETAIL } from '../types/MovieType';
 
-export const getListMovie = () =>{
+export const getListMovieAction = () =>{
     return async (dispatch) => {
         try{
             const res = await quanlyPhimService.getListMovie();
@@ -17,7 +17,7 @@ export const getListMovie = () =>{
 }
 
 
-export const getMovieDetail = (maPhim) =>{
+export const getMovieDetailAction = (maPhim) =>{
     return async (dispatch) =>{
         try{
             const {data} = await quanlyPhimService.getMovieDetail(maPhim);

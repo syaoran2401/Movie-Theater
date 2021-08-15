@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ShowTimesHome from './ShowTimesHome/ShowTimesHome'
 import './Home.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getListMovie } from '../../redux/action/MovieAction';
+import { getListMovieAction } from '../../redux/action/MovieAction';
 import MultipleRowsSlick from '../../components/RSlick/MultipleRowSlick';
 import HomeCarousel from '../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel';
 import { getListTheaterSystemAction } from '../../redux/action/TheaterManagementAction';
@@ -15,7 +15,7 @@ export default function Home(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getListMovie());
+        dispatch(getListMovieAction());
         dispatch(getListTheaterSystemAction())
     }, [])
 

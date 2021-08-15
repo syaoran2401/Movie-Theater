@@ -15,6 +15,11 @@ import CheckoutTemplate from './templates/CheckoutTemplate/CheckoutTemplate'
 import UserTemplate from './templates/UserTemplate/UserTemplate';
 import Loading from './components/Loading/Loading';
 import Profile from './pages/Profile/Profile';
+import AdminTemplate from './templates/AdminTemplate/AdminTemplate';
+import Films from './pages/Admin/Films/Films';
+import ShowTime from './pages/Admin/ShowTime/ShowTime';
+import Users from './pages/Admin/Users/Users';
+import AddNew from './pages/Admin/Films/AddNew/AddNew';
 // import { Suspense, lazy } from 'react'  // Lazy loading ( thư viên react )
 
 // const CheckoutTemplateLazy = lazy(() => import('./templates/CheckoutTemplate/CheckoutTemplate'))
@@ -42,6 +47,12 @@ function App() {
         <UserTemplate exact path='/login' Component={Login} />
         <UserTemplate exact path='/register' Component={Register} />
         <HomeTemplate exact path='/profile' Component={Profile} />
+
+
+        <AdminTemplate exact path='/admin/users' Component={Users} />
+        <AdminTemplate exact path='/admin/films' Component={Films} />
+        <AdminTemplate exact path='/admin/films/addnew' Component={AddNew} />
+        <AdminTemplate exact path='/admin/showtimes' Component={ShowTime} />
       </Switch>
     </Router>
 

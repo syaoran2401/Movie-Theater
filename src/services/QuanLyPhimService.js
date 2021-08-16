@@ -5,20 +5,28 @@ export class QuanLyPhimService extends BaseService{
 
     getListBanner = () =>{
         return this.get('api/QuanLyPhim/LayDanhSachBanner');
-    }
+    };
 
     getListMovie = () =>{
         return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID_00}`)
-    }
+    };
 
     getMovieDetail = (maPhim) =>{
         return this.get(`api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`)
-    }
+    };
 
+    getMovieInfo = (maPhim) =>{
+        return this.get(`api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
+    };
 
     addMovieUploadImg = (formData)=>{
         return this.post("api/QuanLyPhim/ThemPhimUploadHinh",formData)
-    }
+    };
+
+
+    updateMovieUpload = (formData) =>{
+        return this.post("api/QuanLyPhim/CapNhatPhimUpload", formData)
+    };
 }
 
 

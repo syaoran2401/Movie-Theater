@@ -1,4 +1,4 @@
-import { GET_COMING_MOVIE, GET_LIST_MOVIE, GET_MOVIE_DETAIL, GET_SHOWING_MOVIE } from "../types/MovieType"
+import { GET_COMING_MOVIE, GET_LIST_MOVIE, GET_MOVIE_DETAIL, GET_SHOWING_MOVIE, SET_MOVIE_INFO } from "../types/MovieType"
 
 const initialState = {
     arrMovie: [
@@ -34,7 +34,8 @@ const initialState = {
     arrMovieDefault:[],
     dangChieu: true,
     sapChieu: true,
-    movieDetail:{}
+    movieDetail:{},
+    movieInfo: {}
 }
 
 const MovieManagement = (state = initialState, action) => {
@@ -66,6 +67,11 @@ const MovieManagement = (state = initialState, action) => {
             return {...state, movieDetail: action.movieDetail}
         }
 
+        case SET_MOVIE_INFO:{
+            state.movieInfo = action.movieInfo;
+            return {...state}
+        }
+   
 
         default:
             return state

@@ -31,3 +31,19 @@ export const getMovieDetailAction = (maPhim) =>{
         }
     }
 }
+
+
+export const addMovieUploadImgAction = formData =>{
+    return async (dispatch) =>{
+        try{
+            let result = await quanlyPhimService.addMovieUploadImg(formData);
+            alert('Add successfully')
+            console.log('res', result);
+
+
+
+        }catch(err){
+            console.log(err.response.data)
+        }
+    }
+}

@@ -14,6 +14,11 @@ export class QuanLyPhimService extends BaseService{
     getMovieDetail = (maPhim) =>{
         return this.get(`api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`)
     }
+
+
+    addMovieUploadImg = (formData)=>{
+        return this.post("api/QuanLyPhim/ThemPhimUploadHinh",formData)
+    }
 }
 
 

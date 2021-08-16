@@ -71,11 +71,28 @@ export const updateMovieUploadAction = formData =>{
     return async (dispatch) =>{
         try{
             let result = await quanlyPhimService.updateMovieUpload(formData);
+            alert('delete successfully');
+            console.log('res', result);
+
+            dispatch(getListMovieAction());
+            history.push('/admin/film');
+        }catch (err) {
+            console.log(err.response.data)
+        }
+    }
+}
+
+
+
+export const deleteMovieAction = formData =>{
+    return async (dispatch) =>{
+        try{
+            let result = await quanlyPhimService.deleteMovie(formData);
             alert('Add successfully')
             console.log('res', result);
 
             dispatch(getListMovieAction())
-            history.push('/admin/film')
+      
         }catch (err) {
             console.log(err.response.data)
         }

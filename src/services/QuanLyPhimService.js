@@ -27,6 +27,10 @@ export class QuanLyPhimService extends BaseService{
     updateMovieUpload = (formData) =>{
         return this.post("api/QuanLyPhim/CapNhatPhimUpload", formData)
     };
+
+    deleteMovie = (maPhim) =>{
+        return this.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`)
+    }
 }
 
 

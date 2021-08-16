@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMovieUploadImgAction, getMovieInfoAction, updateMovieUploadAction } from '../../../../redux/action/MovieAction';
-import { GROUPID_00 } from '../../../../util/Settings/config';
+import { GROUPID_00, TOKEN } from '../../../../util/Settings/config';
 
 
 
@@ -64,6 +64,8 @@ const Edit = (props) => {
 
                 }
             }
+
+            console.log(localStorage.getItem(TOKEN))
 
             dispatch(updateMovieUploadAction(formData))
 

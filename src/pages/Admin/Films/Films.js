@@ -3,7 +3,7 @@ import { Button, Table } from 'antd';
 import { Input } from 'antd';
 import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux'
-import { getListMovieAction } from '../../../redux/action/MovieAction';
+import { deleteMovieAction, getListMovieAction } from '../../../redux/action/MovieAction';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
 
@@ -83,7 +83,7 @@ export default function Films() {
         },
         {
             title: 'Action',
-            dataIndex: 'action',
+            dataIndex: 'maPhim',
             render: (text, film) => {
                 return <Fragment>
                     <NavLink
@@ -94,12 +94,18 @@ export default function Films() {
                         <EditOutlined />
                     </NavLink>
 
-                    <NavLink className='text-2xl p-5' to='/'
+                    <span className='text-2xl p-5'
                         key={2}
-                        style={{ color: 'red' }}
+                        style={{ color: 'red', cursor: 'pointer' }}
+                        onClick={() =>{
+                            if(window.confirm(`Are you sure you want to delete ${film.tenPhim}? `)){
+                                //call delelte api
+                                dispatch(deleteMovieAction(film.maPhim))
+                            }
+                        }}
                     >
                         <DeleteOutlined />
-                    </NavLink>
+                    </span>
                 </Fragment>
             },
             sortDirections: ['descend', 'ascend'],
@@ -131,7 +137,7 @@ export default function Films() {
                 size="large"
                 onSearch={onSearch}
             />
-            <Table columns={columns} dataSource={data} onChange={onChange} />
+            <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"}/>
         </div>
     )
 }

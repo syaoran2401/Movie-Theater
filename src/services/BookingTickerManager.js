@@ -11,6 +11,10 @@ export class BookingTickerManager extends BaseService{
     bookTicket = (thongTinDatVe = new BookTicketInfo()) =>{
         return this.post(`api/QuanLyDatVe/DatVe`, thongTinDatVe)
     }
+
+    createShowtime = (thongTinLichChieu) =>{
+        return this.post(`api/QuanLyDatVe/TaoLichChieu`, thongTinLichChieu)
+    }
 }
 
 export const bookingTickerManager = new BookingTickerManager()

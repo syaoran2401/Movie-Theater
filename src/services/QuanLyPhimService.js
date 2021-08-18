@@ -1,3 +1,4 @@
+import { GROUP_ID_GP01 } from "../redux/types/TheaterType";
 import { GROUPID_00 } from "../util/Settings/config";
 import { BaseService } from "./BaseService";
 
@@ -7,8 +8,12 @@ export class QuanLyPhimService extends BaseService{
         return this.get('api/QuanLyPhim/LayDanhSachBanner');
     };
 
-    getListMovie = () =>{
-        return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID_00}`)
+    getListMovie = (tenPhim = "") =>{
+        if(tenPhim.trim() !== ""){
+            return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID_GP01}&tenPhim=${tenPhim}`)
+            
+        }
+        return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID_GP01}`)
     };
 
     getMovieDetail = (maPhim) =>{

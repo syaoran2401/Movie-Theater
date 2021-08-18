@@ -39,10 +39,10 @@ export default function AdminTemplate(props) {
     }
 
 
-    // if(userLoginInfo.maLoaiNguoiDung !== "QuanTri"){
-    //     alert("You don't have authorization to view this page");
-    //     return <Redirect to='/'/>
-    // }
+    if(userLoginInfo.maLoaiNguoiDung !== "QuanTri"){
+        alert("You don't have authorization to view this page");
+        return <Redirect to='/'/>
+    }
 
 
     const operations = <Fragment>
@@ -111,10 +111,7 @@ export default function AdminTemplate(props) {
                             <div className='text-right pr-10 pt-1'>{operations}</div>
                         </Header>
                         <Content style={{ margin: '0 16px' }}>
-                            {/* <Breadcrumb style={{ margin: '16px 0' }}>
-                                    <Breadcrumb.Item>User</Breadcrumb.Item>
-                                    <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                                </Breadcrumb> */}
+                            
                             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                                 <Component {...propsRoute} />
                             </div>

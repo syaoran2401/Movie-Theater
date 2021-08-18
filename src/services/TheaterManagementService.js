@@ -18,6 +18,14 @@ export class TheaterManagementService extends BaseService{
     getListTheaterSystem = () =>{
         return this.get(`api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID_GP01}`)
     }
+
+    getTheaterSystemInfo = () =>{
+        return this.get(`api/QuanLyRap/LayThongTinHeThongRap`)
+    }
+
+    getTheaterBranchInfo = (heThongRap) =>{
+        return this.get(`api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${heThongRap}`)
+    }
 }
 
 

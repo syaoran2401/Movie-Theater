@@ -1,16 +1,11 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment, useRef } from 'react'
 import { Button, Table } from 'antd';
 import { Input } from 'antd';
-import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteMovieAction, getListMovieAction } from '../../../redux/action/MovieAction';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
-
-
-const { Search } = Input;
-
-
 
 
 
@@ -18,9 +13,13 @@ const { Search } = Input;
 export default function Films() {
 
 
+
+
     const { arrMovieDefault } = useSelector(state => state.MovieManagement);
+    const searchRef = useRef(null)
     const dispatch = useDispatch();
 
+    console.log(arrMovieDefault)
     console.log("🚀 ~ file: Films.js ~ line 49 ~ Films ~ arrMovieDefault", arrMovieDefault)
     useEffect(() => {
         dispatch(getListMovieAction())
@@ -97,8 +96,8 @@ export default function Films() {
                     <span className='text-2xl p-5'
                         key={2}
                         style={{ color: 'red', cursor: 'pointer' }}
-                        onClick={() =>{
-                            if(window.confirm(`Are you sure you want to delete ${film.tenPhim}? `)){
+                        onClick={() => {
+                            if (window.confirm(`Are you sure you want to delete ${film.tenPhim}? `)) {
                                 //call delelte api
                                 dispatch(deleteMovieAction(film.maPhim))
                             }
@@ -106,6 +105,17 @@ export default function Films() {
                     >
                         <DeleteOutlined />
                     </span>
+
+                    <NavLink
+                        key={3}
+                        className='text-2xl p-5' to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}
+                        style={{ color: 'green' }}
+                        onClick={() =>{
+                            localStorage.setItem("filmParams", JSON.stringify(film))
+                        }}
+                    >
+                        <CalendarOutlined />
+                    </NavLink>
                 </Fragment>
             },
             sortDirections: ['descend', 'ascend'],
@@ -122,7 +132,14 @@ export default function Films() {
 
 
 
-    const onSearch = value => console.log(value);
+    const handleSearchChange = e => {
+        if (searchRef.current) {
+            clearTimeout(searchRef.current)
+        }
+        searchRef.current = setTimeout(() => {
+            dispatch(getListMovieAction(e.target.value))
+        }, 300)
+    };
 
     return (
         <div >
@@ -130,14 +147,13 @@ export default function Films() {
             <Button className='mb-5' onClick={() => {
                 history.push('/admin/films/addnew')
             }}>Add Movie +</Button>
-            <Search
-                className='mb-5'
-                placeholder="input search text"
-                enterButton={<SearchOutlined />}
-                size="large"
-                onSearch={onSearch}
+            <Input
+                placeholder="Search movie ..."
+                style={{ padding: '0.5rem 1rem', marginBottom: '1rem' }}
+                onChange={handleSearchChange}
             />
-            <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"}/>
+
+            <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
         </div>
     )
 }

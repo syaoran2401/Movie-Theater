@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { addMovieUploadImgAction } from '../../../../redux/action/MovieAction';
-import { GROUPID_00 } from '../../../../util/Settings/config';
+import { GROUP_ID_GP01 } from '../../../../redux/types/TheaterType';
 
 
 
@@ -38,7 +38,7 @@ const AddNew = () => {
         },
 
         onSubmit: (values) => {
-           values.maNhom = GROUPID_00
+           values.maNhom = GROUP_ID_GP01
             let formData = new FormData();
             for (let key in values) {
                 if (key !== 'hinhAnh') {

@@ -12,6 +12,7 @@ import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMovieUploadImgAction, getMovieInfoAction, updateMovieUploadAction } from '../../../../redux/action/MovieAction';
 import { GROUPID_00, TOKEN } from '../../../../util/Settings/config';
+import { GROUP_ID_GP01 } from '../../../../redux/types/TheaterType';
 
 
 
@@ -45,7 +46,7 @@ const Edit = (props) => {
             sapChieu: movieInfo.sapChieu,
             hot: movieInfo.hot,
             danhGia: movieInfo.danhGia,
-            maNhom: GROUPID_00,
+            maNhom: GROUP_ID_GP01,
             hinhAnh: null,
         },
 
@@ -65,16 +66,18 @@ const Edit = (props) => {
                 }
             }
 
-            console.log(localStorage.getItem(TOKEN))
+
+            console.log(values)
 
             dispatch(updateMovieUploadAction(formData))
 
         }
     })
 
-    const handleChangeDatePicker = (value) => {
+    const handleChangeDatePicker = (value, date, dateString) => {
         let ngayKhoiChieu = moment(value)
-        formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
+        console.log("🚀 ~ file: Edit.js ~ line 78 ~ handleChangeDatePicker ~ ngayKhoiChieu", ngayKhoiChieu)
+        formik.setFieldValue('ngayKhoiChieu', value)
     }
 
 
@@ -90,10 +93,10 @@ const Edit = (props) => {
             formik.setFieldValue(name, value)
         }
     }
-    
+
     const handleChangeFile = async (e) => {
         let file = e.target.files[0];
-        
+
         if (file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/gif" || file.type === "image/jpg") {
             await formik.setFieldValue('hinhAnh', file)
             let reader = new FileReader();
@@ -146,7 +149,10 @@ const Edit = (props) => {
                     <Input name="moTa" onChange={formik.handleChange} value={formik.values.moTa} />
                 </Form.Item>
                 <Form.Item label="Release Data">
-                    <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDatePicker} value={moment(formik.values.ngayKhoiChieu)} />
+                    <DatePicker format={"DD/MM/YYYY"}
+                        onChange={handleChangeDatePicker}
+                        value={moment(formik.values.ngayKhoiChieu)} 
+                        />
                 </Form.Item>
                 <Form.Item label="Showing">
                     <Switch onChange={handleChangeSwitch("dangChieu")} checked={formik.values.dangChieu} />

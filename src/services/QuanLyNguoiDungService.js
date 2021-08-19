@@ -13,6 +13,11 @@ export class QuanLyNguoiDungService extends BaseService{
     getUserInfo = () =>{
         return this.post(`api/QuanLyNguoiDung/ThongTinTaiKhoan`)
     }
+
+    updateUserinfo = (model) =>{
+        return this.put('api/QuanLyNguoiDung/CapNhatThongTinNguoiDung', model)
+    }
 }
+
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService()

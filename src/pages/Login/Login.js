@@ -76,7 +76,7 @@ export default function Login() {
                             <NavLink to="/home" className='text-gray-700 hover:text-gray-700'>Back to Home</NavLink>
                         </div>
                     </div>
-                    <div className="mt-10 text-sm font-display font-semibold text-gray-700 text-center">
+                    <div className="mt-6 text-sm font-display font-semibold text-gray-700 text-center">
                         Don't have an account ? Sign up<NavLink to='/register' className="cursor-pointer text-indigo-600 hover:text-indigo-800"> <span className='text-red-600'>HERE</span></NavLink>
                     </div>
                 </div>

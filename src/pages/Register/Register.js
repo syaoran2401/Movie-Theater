@@ -17,7 +17,7 @@ function Register(props) {
 
     return (
         <form className="lg:w-1/2  xl:max-w-screen-sm" onSubmit={handleSubmit}>
-            <div className="py-8 bg-indigo-100 lg:bg-white flex justify-between lg:justify-between lg:px-12">
+            <div className="py-4 bg-indigo-100 lg:bg-white flex justify-between lg:justify-between lg:px-12">
                 <div className="cursor-pointer flex  items-center">
                     <div>
                         <svg className="w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 225 225" style={{ enableBackground: 'new 0 0 225 225' }} xmlSpace="preserve">
@@ -144,6 +144,10 @@ function Register(props) {
                                 Sign Up
                             </button>
                         </div>
+
+                        <div className="mt-3 text-sm font-display font-semibold text-gray-700 text-center">
+                        Already have an account ? Sign In<NavLink to='/login' className="cursor-pointer text-indigo-600 hover:text-indigo-800"> <span className='text-red-600'>HERE</span></NavLink>
+                    </div>
                     </div>
 
                 </div>

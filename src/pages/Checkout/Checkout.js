@@ -9,7 +9,7 @@ import _ from 'lodash'
 import { BookTicketInfo } from '../../_core/models/BookTicket';
 
 import { Tabs } from 'antd';
-import { getUserInfo } from '../../redux/action/UserManagementAction';
+import { getUserInfoAction } from '../../redux/action/UserManagementAction';
 import moment from 'moment';
 import { connection } from '../..';
 import { history } from '../../App';
@@ -345,7 +345,7 @@ function KetQuaDatVe(props) {
     }
 
     useEffect(() => {
-        dispatch(getUserInfo())
+        dispatch(getUserInfoAction())
     }, [])
 
 

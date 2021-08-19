@@ -16,7 +16,23 @@ export const loginAction = (loginInfo) => {
                     userLoginInfo: result.data.content
                 })
 
-                history.goBack()
+                history.push('/home')
+            }
+        } catch (err) {
+            notifyFunction('error', 'Error Message', 'Account or passowrd is incorrect !')
+            console.log(err.response.data)
+        }
+    }
+}
+
+export const registerAction = (userSignUpInfo) => {
+    console.log('userSignUpInfo', userSignUpInfo)
+    return async (dispatch) => {
+        try {
+            const result = await quanLyNguoiDungService.registAccount(userSignUpInfo);
+            if (result.data.statusCode === 200) {
+                notifyFunction('success', 'Congratulations', 'Account signed up successfully !')
+                history.push('/login')
             }
         } catch (err) {
             console.log(err.response.data)
@@ -24,26 +40,11 @@ export const loginAction = (loginInfo) => {
     }
 }
 
-export const registerAction = (userSignUpInfo) =>{
-    console.log('userSignUpInfo', userSignUpInfo)
-    return async (dispatch) => {
-        try{
-            const result = await quanLyNguoiDungService.registAccount(userSignUpInfo);
-            if(result.data.statusCode === 200){
-                notifyFunction('success', 'Congratulations', 'Account signed up successfully !')
-                history.push('/login')
-            }
-        }catch(err){
-            console.log(err.response.data)
-        }
-    }
-}
-
-export const getUserInfo = () =>{
-    return async dispatch =>{
+export const getUserInfoAction = () => {
+    return async dispatch => {
         try {
 
-            dispatch(displayLoadingAction);
+            // dispatch(displayLoadingAction);
             const result = await quanLyNguoiDungService.getUserInfo();
             if (result.data.statusCode === 200) {
                 console.log('result', result)
@@ -52,10 +53,25 @@ export const getUserInfo = () =>{
                     userInfo: result.data.content
                 });
             }
-            dispatch(hideLoadingAction);
+            // dispatch(hideLoadingAction);
         } catch (err) {
-            console.log(err.response.data)
+            console.log(err.response?.data)
         }
-        dispatch(hideLoadingAction);
+        // dispatch(hideLoadingAction);
+    }
+}
+
+export const updateUserInfoAction = (model) => {
+    return async dispatch => {
+        try {
+            const result = await quanLyNguoiDungService.updateUserinfo(model);
+            console.log(result)
+            if (result.data.statusCode === 200) {
+                dispatch(getUserInfoAction())
+                notifyFunction('success', 'Congratulations', 'Account updated successfully !')
+            }
+        } catch (err) {
+            console.log(err.response?.data)
+        }
     }
 }

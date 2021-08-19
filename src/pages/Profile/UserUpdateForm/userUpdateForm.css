@@ -1,0 +1,84 @@
+
+.condiv {
+    width: 60%;
+    height: 80% !important;
+    position: absolute;
+    top: 15% !important;
+    left: 28%;
+    line-height: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    display: none;
+  
+  }
+  
+  .activeCondiv {
+    display: block;
+    animation: zoomOut 0.5s linear;
+  }
+  
+  @keyframes zoomOut {
+    0% {
+      transform: scale(0.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .subtopic {
+    margin: 2rem 10px 2rem 15px !important;
+    font-size: 2rem !important;
+    text-align: center;
+  }
+
+
+  .inputField{
+    background: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37)  !important;
+    border-radius: 2rem  !important;
+    width: 80%  !important;
+    height: 3rem  !important;
+    padding: 1rem  !important;
+    border: none  !important;
+    outline: none  !important;
+    color: #3c354e  !important;
+    font-size: 1rem  !important;
+    font-weight: bold  !important;
+    text-align: center!important;
+}
+
+.inputField:focus {
+  display: inline-block;
+  box-shadow: 0 0 0 0.2rem #b9abe0;
+  /* backdrop-filter: blur(12rem); */
+  border-radius: 2rem;
+}
+.inputField::placeholder {
+  color: #b9abe099;
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+label{
+    color: white !important;
+    font-size: 1.2rem !important;
+}
+
+.customButton {
+    background: linear-gradient(to right, #14163c 0%, #03217b 79%) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    width: 40% !important;
+    height: 3rem;
+    border: none;
+    color: white;
+    border-radius: 2rem;
+    cursor: pointer;
+   
+}

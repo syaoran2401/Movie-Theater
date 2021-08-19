@@ -9,7 +9,8 @@ if (localStorage.getItem(USER_LOGIN)) {
 
 const initialState = {
     userLoginInfo: user, // tai khoan
-    userInfo : {}
+    userInfo : {},
+
 }
 
 const UserManagementReducer = (state = initialState, action) => {
@@ -26,6 +27,7 @@ const UserManagementReducer = (state = initialState, action) => {
             const {userInfo} = action;
             return {...state, userInfo:userInfo}
         }
+
 
         default:
             return state

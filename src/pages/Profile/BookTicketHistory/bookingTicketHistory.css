@@ -1,0 +1,124 @@
+.mask {
+    background: rgba(24, 24, 16, .2);
+    border-radius: 2em;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+  }
+
+
+h1,h2,h3,h4,h5,p {
+	font-weight: 400 !important;
+}
+
+
+
+.movie-header {
+	padding:0;
+	margin: 0;
+	height: 300px;
+	width: 100%;
+	display: block;
+	border-top-left-radius: 10px;
+	border-top-right-radius:10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.header-icon-container {
+	position: relative;
+}
+
+.header-icon {
+	width: 100%;
+	height: 367px;
+	line-height: 367px;
+	text-align:center;
+	vertical-align:middle;
+	margin: 0 auto;
+	color: #ffffff;
+	font-size: 54px;
+	text-shadow:0px 0px 20px #6abcea, 0px 5px 20px #6ABCEA;
+	opacity: .85;
+}
+
+.header-icon:hover {
+	background:rgba(0,0,0,.15);
+	font-size: 74px;
+	text-shadow:0px 0px 20px #6abcea, 0px 5px 30px #6ABCEA;
+	border-top-left-radius: 10px;
+	border-top-right-radius:10px;
+	opacity: 1;
+}
+
+/* .movie-card:hover {
+	transform:scale(1.03);
+	box-shadow: 0px 10px 25px rgba(0,0,0,.08);
+} */
+
+.movie-content {
+	padding: 18px 18px 24px 18px;
+	margin: 0;
+}
+
+.movie-content-header, .movie-info {
+	display: table;
+	width: 100%;
+}
+
+.movie-title {
+	font-size: 24px;
+	margin: 0;
+	display: table-cell;
+}
+
+
+.movie-info {
+	margin-top: 1em;
+}
+
+.info-section {
+	display: table-cell;
+	text-transform: uppercase;
+	text-align:center;
+    margin:0 20px;
+}
+
+.info-section:first-of-type {
+	text-align:left;
+}
+
+.info-section:last-of-type {
+	text-align:right;
+}
+
+.info-section label {
+    display: block !important;
+    color: white !important;
+    margin-bottom: .5em !important;
+    font-size: 0.8rem !important;
+}
+
+
+
+.info-section span {
+	font-weight: 700 !important;
+	font-size: 1rem !important;
+}
+
+@media screen and (max-width: 500px) {
+	.movie-card {
+		width: 95%;
+		max-width: 95%;
+		margin: 1em;
+		display: block;
+	}
+	
+	.container {
+		padding: 0;
+		margin: 0;
+	}
+}

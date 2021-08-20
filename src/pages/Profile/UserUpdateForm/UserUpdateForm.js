@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useFormik, ErrorMessage } from 'formik'
+import React, { Fragment, useState } from 'react'
+import { useFormik } from 'formik'
 import "./userUpdateForm.css"
-import { Form, Input, Select, Row, Col } from 'antd'
+import { Form, Input, Row, Col } from 'antd'
 import * as Yup from "yup";
 import { updateUserInfoAction } from '../../../redux/action/UserManagementAction'
 import { useDispatch } from 'react-redux'
+import styled from "styled-components";
 
 export default function UserUpdateform(props) {
-    const { userInfo, setActive } = props
+    const { userInfo, active, setActive } = props
 
-    const dispatch = useDispatch()
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    const dispatch = useDispatch();
+
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
     const formik = useFormik({
@@ -23,7 +27,7 @@ export default function UserUpdateform(props) {
             maNhom: userInfo.maNhom,
             soDT: userInfo.soDT,
             email: userInfo.email,
-            maLoaiNguoiDung:"KhachHang"
+            maLoaiNguoiDung: "KhachHang"
         },
 
         validationSchema: Yup.object().shape({
@@ -43,24 +47,56 @@ export default function UserUpdateform(props) {
 
 
         onSubmit: values => {
-            console.log('values', values);
+          
             dispatch(updateUserInfoAction(values))
-            setActive(false);
-            // dispatch(loginAction(values))
+            let updateActive = { ...active }
+            updateActive.updateForm = false;
+            updateActive.bookTicketHistory = false
+            setActive(updateActive);
+
         },
     });
 
 
-    // const handleChange =(fieldName, values) =>{
-    //     console.log(values)
-    //     formik.setFieldValue(fieldName, values)
-    // }
 
+
+    const toggling = () => setIsOpen(!isOpen);
+
+
+    const onOptionClicked = value => () => {
+        let convertValue = ""
+        if (value === "Guest") {
+            convertValue = "KhachHang"
+        } else {
+            convertValue = "QuanTri"
+        }
+        formik.setFieldValue('maLoaiNguoiDung', convertValue)
+        setSelectedOption(value);
+        setIsOpen(false);
+
+    };
+
+    const options = ["Guest", "Manager"];
 
 
     return (
         <Fragment>
-            <h1 className="subtopic">User Info</h1>
+
+            <Row>
+                <Col flex="auto">  <h1 className="subtopic">User Info</h1></Col>
+                <Col flex="none">
+                    <div
+                        style={{ cursor: 'pointer' }}
+                        className='m-5 text-xl'
+                        onClick={() => {
+                            let updateActive = { ...active }
+                            updateActive.updateForm = false;
+                            updateActive.bookTicketHistory = false
+                            setActive(updateActive);
+                        }}>X</div>
+                </Col>
+            </Row>
+          
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 className="mt-12"
@@ -76,8 +112,6 @@ export default function UserUpdateform(props) {
                     <Input className='inputField' name='matKhau' value={formik.values.matKhau} onChange={formik.handleChange} />
                     {formik.touched.matKhau && formik.errors.matKhau ? <div className='mt-3'>{formik.errors.matKhau}</div> : null}
                 </Form.Item>
-
-
 
 
                 <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Name">
@@ -108,11 +142,34 @@ export default function UserUpdateform(props) {
 
 
                 <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} name='maLoaiNguoiDung' label="Type">
-                    <select  className='inputField' style={{ textIndent: '40%' }} onChange={formik.handleChange} >
-                        <option value="KhachHang">Guest</option>
-                        <option value="QuanTri">Manager</option>
-                    </select>
+                    <DropDownContainer>
+
+
+                        <DropDownHeader onClick={toggling}>
+                            <Row>
+                                <Col flex="auto"> {selectedOption || "Guest"}</Col>
+                                <Col flex="none">
+                                    <span className='mr-4'>
+                                        v
+                                    </span>
+                                </Col>
+                            </Row>
+                       
+                        </DropDownHeader>
+                        {isOpen && (
+                            <DropDownListContainer>
+                                <DropDownList >
+                                    {options.map(option => (
+                                        <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
+                                            {option}
+                                        </ListItem>
+                                    ))}
+                                </DropDownList>
+                            </DropDownListContainer>
+                        )}
+                    </DropDownContainer>
                 </Form.Item>
+
 
                 <div className='text-center '>
                     <button className='customButton'>Update</button>
@@ -123,3 +180,58 @@ export default function UserUpdateform(props) {
         </Fragment >
     )
 }
+
+const DropDownContainer = styled("div")`
+  margin: 0 auto;
+  width:80%
+`;
+
+const DropDownHeader = styled("div")`
+position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
+    border-radius: 2rem  !important;
+    width: 100%  !important;
+    height: 3rem  !important;
+    padding: 1rem  !important;
+    border: none  !important;
+    outline: none  !important;
+    color: #3c354e  !important;
+    font-size: 1rem  !important;
+    font-weight: bold  !important;
+    text-align: center!important;
+`;
+
+const DropDownListContainer = styled("div")`
+    position: absolute;
+    width: 80%;
+    z-index: 99999999;
+
+`;
+
+const DropDownList = styled("ul")`
+  padding: 0;
+  margin: 0;
+  padding-bottom:0.1rem;
+  background: #A57CB7;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
+  box-sizing: border-box;
+  color: #3c354e ;
+  font-size: 1rem ;
+  font-weight: 500;
+  cursor: pointer;
+  &:first-child {
+    padding-top: 0.8em;
+  }
+ 
+`;
+
+const ListItem = styled("li")`
+  width:90%;
+  list-style: none;
+  margin:0 auto 10px;
+
+  &:hover{
+    background: rgba(255, 255, 255, 0.15) 
+  }
+`;

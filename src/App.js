@@ -22,6 +22,7 @@ import Users from './pages/Admin/Users/Users';
 import AddNew from './pages/Admin/Films/AddNew/AddNew';
 import Edit from './pages/Admin/Films/Edit/Edit';
 import Dashboard from './pages/Admin/Dashboard/Dashboard';
+import AddNewUser from './pages/Admin/Users/AddNewUser/AddNewUser';
 
 // import { Suspense, lazy } from 'react'  // Lazy loading ( thư viên react )
 
@@ -32,7 +33,7 @@ export const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
-      <Loading/>
+      <Loading />
       <Switch>
         <HomeTemplate exact path='/' Component={Home} />
         <HomeTemplate exact path='/home' Component={Home} />
@@ -41,7 +42,7 @@ function App() {
         <HomeTemplate exact path='/movieDetail/:maPhim' Component={MovieDetail} />
 
         <CheckoutTemplate exact path='/checkout/:maLichChieu' Component={Checkout} />
-        
+
         {/* Lazy Loading */}
         {/* <Suspense fallback={<h1>LOADING ...</h1>}>
           <CheckoutTemplateLazy exact path='/checkout/:maLichChieu' Component={Checkout} />
@@ -58,10 +59,12 @@ function App() {
         <AdminTemplate exact path='/admin/films/addnew' Component={AddNew} />
         <AdminTemplate exact path='/admin/films/edit/:id' Component={Edit} />
         <AdminTemplate exact path='/admin/films/showtime/:id/:tenphim' Component={ShowTime} />
-      
 
- 
-     
+
+        <AdminTemplate exact path='/admin/films/addNewUser' Component={AddNewUser} />
+
+
+
       </Switch>
     </Router>
 

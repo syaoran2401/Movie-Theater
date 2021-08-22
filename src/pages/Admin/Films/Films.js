@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { deleteMovieAction, getListMovieAction } from '../../../redux/action/MovieAction';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
+import './films.css'
 
 
 
@@ -19,8 +20,7 @@ export default function Films() {
     const searchRef = useRef(null)
     const dispatch = useDispatch();
 
-    console.log(arrMovieDefault)
-    console.log("🚀 ~ file: Films.js ~ line 49 ~ Films ~ arrMovieDefault", arrMovieDefault)
+  
     useEffect(() => {
         dispatch(getListMovieAction())
     }, [])
@@ -41,7 +41,7 @@ export default function Films() {
             dataIndex: 'hinhAnh',
             render: (text, film, index) => {
                 return <Fragment>
-                    <img src={text} alt={film.tenPhim} width={70} height={70} onError={(e) => { e.target.onerror = null; e.target.src = `https://picsum.photos/id/${index}/70/70` }} />
+                    <img className='mx-auto' src={text} alt={film.tenPhim} width={70} height={70} onError={(e) => { e.target.onerror = null; e.target.src = `https://picsum.photos/id/${index}/70/70` }} />
                 </Fragment>
             },
             width: "15%"
@@ -84,6 +84,7 @@ export default function Films() {
             title: 'Action',
             dataIndex: 'maPhim',
             render: (text, film) => {
+              
                 return <Fragment>
                     <NavLink
                         key={1}
@@ -142,8 +143,8 @@ export default function Films() {
     };
 
     return (
-        <div >
-            <h3 className='text-4xl text-bold'>Films Management</h3>
+        <div className='filmManagement'>
+            <h3 className='text-4xl text-bold text-center'>Films Management</h3>
             <Button className='mb-5' onClick={() => {
                 history.push('/admin/films/addnew')
             }}>Add Movie +</Button>

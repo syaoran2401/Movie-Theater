@@ -92,11 +92,11 @@ function Register(props) {
                         </div>
 
                         <div className="mt-8">
-                            <div className="text-sm font-bold text-gray-700 tracking-wide">Account:</div>
+                            <div className="text-sm font-bold text-gray-700 tracking-wide">Username:</div>
                             <input
                                 name='taiKhoan'
                                 className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                                placeholder="Enter you account ...."
+                                placeholder="Enter the username ...."
                                 onChange={handleChange}
                             />
                             <span className="text-red-600">{errors.taiKhoan}</span>
@@ -169,7 +169,7 @@ const RegisterForm = withFormik({
     }),
 
     validationSchema: Yup.object().shape({
-        taiKhoan: Yup.string().required('Account field must be provided !'),
+        taiKhoan: Yup.string().required('Username field must be provided !'),
         soDt: Yup.string().required('A phone number must be provide !'),
         hoTen: Yup.string().required('Name field must be provide !'),
         email: Yup.string().email('Invalid email').required('Email field must be provided !'),

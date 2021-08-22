@@ -103,25 +103,25 @@ export default function UserUpdateform(props) {
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 10 }}
             >
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Account">
-                    <Input disabled={false} className='inputField' name='taiKhoan' value={formik.values.taiKhoan} />
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Username">
+                    <Input disabled={true} className='inputField' name='taiKhoan' value={formik.values.taiKhoan} />
                 </Form.Item>
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Password">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Password">
                     <Input className='inputField' name='matKhau' value={formik.values.matKhau} onChange={formik.handleChange} />
                     {formik.touched.matKhau && formik.errors.matKhau ? <div className='mt-3'>{formik.errors.matKhau}</div> : null}
                 </Form.Item>
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Name">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Name">
                     <Input className='inputField' name='hoTen' value={formik.values.hoTen} onChange={formik.handleChange} />
                     {formik.touched.hoTen && formik.errors.hoTen ? <div className='mt-3'>{formik.errors.hoTen}</div> : null}
                 </Form.Item>
 
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Phone">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Phone">
                     <Input className='inputField' name='soDT' value={formik.values.soDT} onChange={formik.handleChange} />
                     {formik.touched.soDT && formik.errors.soDT ? <div className='mt-3'>{formik.errors.soDT}</div> : null}
                 </Form.Item>
@@ -129,19 +129,19 @@ export default function UserUpdateform(props) {
 
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Email">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Email">
                     <Input className='inputField' name='email' value={formik.values.email} onChange={formik.handleChange} />
                     {formik.touched.email && formik.errors.email ? <div className='mt-3'>{formik.errors.email}</div> : null}
                 </Form.Item>
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} label="Group">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Group">
                     <Input className='inputField' name='maNhom' value={formik.values.maNhom} onChange={formik.handleChange} />
                     {formik.touched.maNhom && formik.errors.maNhom ? <div className='mt-3'>{formik.errors.maNhom}</div> : null}
                 </Form.Item>
 
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }} name='maLoaiNguoiDung' label="Type">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} name='maLoaiNguoiDung' label="Type">
                     <DropDownContainer>
 
 

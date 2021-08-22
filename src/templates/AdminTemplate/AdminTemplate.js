@@ -100,9 +100,9 @@ export default function AdminTemplate(props) {
                                 </Menu.Item>
                             </SubMenu>
 
-                            <Menu.Item key="3" icon={<HistoryOutlined />}>
+                            {/* <Menu.Item key="3" icon={<HistoryOutlined />}>
                                 <NavLink to="/admin/showtimes">Showtime</NavLink>
-                            </Menu.Item>
+                            </Menu.Item> */}
 
                         </Menu>
                     </Sider>

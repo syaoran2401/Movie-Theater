@@ -109,6 +109,31 @@ h1,h2,h3,h4,h5,p {
 	font-size: 1rem !important;
 }
 
+.profile-pagination .ant-pagination-item{
+    background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+
+.profile-pagination .ant-pagination-item:hover{
+	border-color:#771c1c !important
+}
+.profile-pagination .ant-pagination-item-active{
+	border-color:#771c1c !important
+
+}
+
+
+.profile-pagination .ant-pagination-item a{
+	color:white !important
+}
+
+.profile-pagination .ant-pagination-prev .ant-pagination-item-link, 
+.profile-pagination .ant-pagination-next .ant-pagination-item-link{
+	background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+
+
 @media screen and (max-width: 500px) {
 	.movie-card {
 		width: 95%;
@@ -122,3 +147,4 @@ h1,h2,h3,h4,h5,p {
 		margin: 0;
 	}
 }
+

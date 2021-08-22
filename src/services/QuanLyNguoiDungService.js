@@ -17,6 +17,10 @@ export class QuanLyNguoiDungService extends BaseService{
     updateUserinfo = (model) =>{
         return this.put('api/QuanLyNguoiDung/CapNhatThongTinNguoiDung', model)
     }
+
+    getListUser = (groupId) =>{
+        return this.get('api/QuanLyNguoiDung/LayDanhSachNguoiDung', groupId)
+    }
 }
 
 

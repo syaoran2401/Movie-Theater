@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Fragment } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Pagination } from 'antd'
 import './bookingTicketHistory.css'
 import moment from 'moment'
 
@@ -9,9 +9,31 @@ export default function BookingTicketHistory(props) {
 
     const { ticketInfo, active, setActive } = props;
 
+    const [state, setState] = useState({
+        minValue: 0,
+        maxValue: 3
+    });
+
+
+
+    const handleChange = (value) => {
+        if (value <= 1) {
+            setState({
+                minValue: 0,
+                maxValue: 3
+            })
+        } else {
+            setState({
+                minValue: value * 2,
+                maxValue: value * 3
+            })
+        }
+    }
+
+    console.log('state', state)
 
     const renderMovieTicket = () => {
-        return ticketInfo?.map((ticket, index) => {
+        return ticketInfo?.slice(state.minValue, state.maxValue).map((ticket, index) => {
             return <Col key={index} xs={24} md={12} lg={12} xl={8}>
                 <div className='mask text-center'>
                     <div >
@@ -63,9 +85,18 @@ export default function BookingTicketHistory(props) {
 
             <div className='container mt-6'>
                 <Row gutter={[32, 16]}>
-                    {renderMovieTicket()}       
+                    {renderMovieTicket()}
                 </Row>
 
+            </div>
+
+            <div className='flex justify-end items-center m-20 profile-pagination'>
+            <Pagination
+                defaultCurrent={1}
+                defaultPageSize={3} //default size of page
+                onChange={handleChange}
+                total={ticketInfo?.length} //total number of card data available
+            />
             </div>
         </Fragment>
     )

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import {
     Form,
     Input,
-    Radio,
     DatePicker,
     InputNumber,
     Switch,
+    Button,
 } from 'antd';
 import { useFormik } from 'formik';
 import moment from 'moment';
@@ -18,7 +18,6 @@ import { GROUP_ID_GP01 } from '../../../../redux/types/TheaterType';
 
 
 const AddNew = () => {
-    const [componentSize, setComponentSize] = useState('default');
     const [imgSrc, setImgSrc] = useState(null);
 
     const dispatch = useDispatch()
@@ -34,11 +33,11 @@ const AddNew = () => {
             hot: false,
             danhGia: 0,
             hinhAnh: {},
-          
+            // maNhom: GROUP_ID_GP01
         },
 
         onSubmit: (values) => {
-           values.maNhom = GROUP_ID_GP01
+        //    values.maNhom = GROUP_ID_GP01
             let formData = new FormData();
             for (let key in values) {
                 if (key !== 'hinhAnh') {
@@ -50,7 +49,7 @@ const AddNew = () => {
                 }
             }
 
-            console.log('formik', formData.get("File"));
+            console.log('formik', formData.get(values.maNhom));
             dispatch(addMovieUploadImgAction(formData))
         
         }
@@ -91,35 +90,22 @@ const AddNew = () => {
 
 
 
-    const onFormLayoutChange = ({ size }) => {
-        setComponentSize(size);
-    };
-
     return (
-        <>
+        <div className='container mx-auto'>
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 labelCol={{
-                    span: 4,
+                    span: 10,
                 }}
                 wrapperCol={{
-                    span: 14,
+                    span: 6,
                 }}
                 layout="horizontal"
-                initialValues={{
-                    size: componentSize,
-                }}
-                onValuesChange={onFormLayoutChange}
-                size={componentSize}
+                initialValues="large"
+                size="large"
             >
-                <h3>Add New Movie</h3>
-                <Form.Item label="Form Size" name="size">
-                    <Radio.Group>
-                        <Radio.Button value="small">Small</Radio.Button>
-                        <Radio.Button value="default">Default</Radio.Button>
-                        <Radio.Button value="large">Large</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
+                <h3 className='text-4xl text-center mb-20'>Add New Movie</h3>
+            
                 <Form.Item label="Name Movie">
                     <Input name="tenPhim" onChange={formik.handleChange} />
                 </Form.Item>
@@ -158,11 +144,15 @@ const AddNew = () => {
                         src={imgSrc} alt="..."
                     />
                 </Form.Item>
-                <Form.Item label="Action">
-                    <button type="submit" className="bg-blue-300 text-white p-2">Add movie</button>
+
+                
+                <Form.Item wrapperCol={{ offset: 12, span: 16 }}>
+                    <Button type="primary" htmlType="submit">
+                        Add movie
+                    </Button>
                 </Form.Item>
             </Form>
-        </>
+        </div>
     );
 };
 

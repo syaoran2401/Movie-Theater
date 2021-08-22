@@ -1,8 +1,9 @@
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService"
-import { LOGIN_ACTION, SET_USER_INFO } from "../types/UserTypes";
+import { GET_LIST_USER, LOGIN_ACTION, SET_USER_INFO } from "../types/UserTypes";
 import { history } from '../../App'
 import { displayLoadingAction, hideLoadingAction } from "./LoadingAction";
 import { notifyFunction } from "../../util/Settings/Notification/notificationMovie";
+import { GROUPID_00 } from "../../util/Settings/config";
 
 
 export const loginAction = (loginInfo) => {
@@ -19,7 +20,7 @@ export const loginAction = (loginInfo) => {
                 history.push('/home')
             }
         } catch (err) {
-            notifyFunction('error', 'Error Message', 'Account or passowrd is incorrect !')
+            notifyFunction('error', 'Error Message', 'Username or passowrd is incorrect !')
             console.log(err.response.data)
         }
     }
@@ -71,6 +72,25 @@ export const updateUserInfoAction = (model) => {
                 notifyFunction('success', 'Congratulations', 'Account updated successfully !')
             }
         } catch (err) {
+            console.log(err.response?.data)
+        }
+    }
+}
+
+
+export const getListUserAction = () =>{
+    return async (dispatch) => {
+        try{
+            const result = await quanLyNguoiDungService.getListUser(GROUPID_00);
+            if(result.data.statusCode === 200){
+                console.log(result);
+
+                dispatch({
+                    type:GET_LIST_USER,
+                    listUser: result.data.content
+                })
+            }
+        }catch (err) {
             console.log(err.response?.data)
         }
     }

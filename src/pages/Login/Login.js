@@ -46,8 +46,8 @@ export default function Login() {
                 <div className="mt-12">
                     <div>
                         <div>
-                            <div className="text-sm font-bold text-gray-700 tracking-wide">Account:</div>
-                            <input name='taiKhoan' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter you account ...." onChange={formik.handleChange} />
+                            <div className="text-sm font-bold text-gray-700 tracking-wide">Username:</div>
+                            <input name='taiKhoan' className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter you username ...." onChange={formik.handleChange} />
                         </div>
                         <div className="mt-8">
                             <div className="flex justify-between items-center">

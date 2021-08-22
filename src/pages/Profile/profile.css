@@ -96,6 +96,10 @@ nav ul li {
 
 }
 
+nav ul li{
+  transition: all 0.5s
+}
+
 
 
 nav ul li:hover {
@@ -108,10 +112,10 @@ a {
 }
 
 
-p {
+.profile p {
   font-size: var(--fontsize-p);
-  color: #ffffffbf;
-  margin: 10px;
+  /* color: #ffffffbf; */
+  margin: 15px;
 }
 /* h1 {
   margin: 10px;

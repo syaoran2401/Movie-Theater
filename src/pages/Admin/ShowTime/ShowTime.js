@@ -117,9 +117,9 @@ export default function ShowTime(props) {
     }
 
     return (
-        <div className='container'>
-            <h1 className='text-4xl mb-9'>Create Showtimes - {props.match.params.tenphim}</h1>
-            <img src={film.hinhAnh} alt={film.hinhAnh} width={200} height={200}/>
+        <div className='container mx-auto'>
+            <h1 className='text-4xl text-center mb-20'>Create Showtimes - {props.match.params.tenphim}</h1>
+            <img className="mx-auto my-10" src={film.hinhAnh} alt={film.hinhAnh} width={700} height={1000}/>
             <Form
                 labelCol={{
                     span: 8,

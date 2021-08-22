@@ -6,12 +6,13 @@ import {
     DatePicker,
     InputNumber,
     Switch,
+    Button,
 } from 'antd';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMovieUploadImgAction, getMovieInfoAction, updateMovieUploadAction } from '../../../../redux/action/MovieAction';
-import { GROUPID_00, TOKEN } from '../../../../util/Settings/config';
+import {  getMovieInfoAction, updateMovieUploadAction } from '../../../../redux/action/MovieAction';
+import { GROUPID_00 } from '../../../../util/Settings/config';
 import { GROUP_ID_GP01 } from '../../../../redux/types/TheaterType';
 
 
@@ -119,10 +120,10 @@ const Edit = (props) => {
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 labelCol={{
-                    span: 4,
+                    span: 10,
                 }}
                 wrapperCol={{
-                    span: 14,
+                    span: 6,
                 }}
                 layout="horizontal"
                 initialValues={{
@@ -131,7 +132,7 @@ const Edit = (props) => {
                 onValuesChange={onFormLayoutChange}
                 size={componentSize}
             >
-                <h3>Add New Movie</h3>
+                <h3 className='text-4xl text-center'>Add New Movie</h3>
                 <Form.Item label="Form Size" name="size">
                     <Radio.Group>
                         <Radio.Button value="small">Small</Radio.Button>
@@ -181,9 +182,14 @@ const Edit = (props) => {
                         src={imgSrc === null ? movieInfo.hinhAnh : imgSrc} alt="..."
                     />
                 </Form.Item>
-                <Form.Item label="Action">
-                    <button type="submit" className="bg-blue-300 text-white p-2">Update</button>
+
+                 
+                <Form.Item wrapperCol={{ offset: 11, span: 16 }}>
+                    <Button type="primary" htmlType="submit">
+                        Update
+                    </Button>
                 </Form.Item>
+              
             </Form>
         </>
     );

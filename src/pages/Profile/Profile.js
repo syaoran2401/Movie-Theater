@@ -44,23 +44,23 @@ export default function Profile(props) {
                         <div className='mt-5 container'>
                             <p style={{ color: "green" }}>Your account info:</p>
                             <div className='mb-5'>
-                                <p className='text-black' style={{ marginBottom: '0.5rem' }}>Account:</p>
-                                <p className='text-gray-600'>{userInfo.taiKhoan}</p>
+                                <p className='text-black' style={{ marginBottom: '0.5rem' }}>Username:</p>
+                                <h5 className='text-gray-600'>{userInfo.taiKhoan}</h5>
                             </div>
 
                             <div className='mb-5'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Name: </p>
-                                <p className='text-gray-600'>{userInfo.hoTen}</p>
+                                <h5 className='text-gray-600'>{userInfo.hoTen}</h5>
                             </div>
 
                             <div className='mb-5'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Email:</p>
-                                <p className='text-gray-600'>{userInfo.email}</p>
+                                <h5 className='text-gray-600'>{userInfo.email}</h5>
                             </div>
 
                             <div className='mb-5'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Phone Number:</p>
-                                <p className='text-gray-600'>{userInfo.soDT}</p>
+                                <h5 className='text-gray-600'>{userInfo.soDT}</h5>
                             </div>
 
                         </div>

@@ -11,7 +11,7 @@ export default function Loading(props) {
         <>
             {isLoading ? <div style={{ position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,.5)', display: 'flex', zIndex: '99', justifyContent: 'center', alignItems: 'center' }}>
                 <div className='text-4xl text-white'>
-                    <img src={loading} alt="loading" style={{ width: '70vh', height: '70vh' }} />
+                    <img src={loading} alt="loading" style={{ width: '50vh', height: '50vh' }} />
                 </div>
             </div> : ''}
         </>

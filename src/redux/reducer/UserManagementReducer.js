@@ -1,5 +1,5 @@
 import { TOKEN, USER_LOGIN } from "../../util/Settings/config";
-import { GET_LIST_USER, LOGIN_ACTION, SET_USER_INFO } from "../types/UserTypes"
+import { GET_LIST_USER, GET_USER_TYPE, LOGIN_ACTION, SET_USER_INFO } from "../types/UserTypes"
 
 
 let user = {};
@@ -10,8 +10,8 @@ if (localStorage.getItem(USER_LOGIN)) {
 const initialState = {
     userLoginInfo: user, // tai khoan
     userInfo : {},
-    listUser: []
-
+    listUser: [],
+    userType:[]
 }
 
 const UserManagementReducer = (state = initialState, action) => {
@@ -31,6 +31,10 @@ const UserManagementReducer = (state = initialState, action) => {
 
         case GET_LIST_USER:{
             return {...state, listUser: action.listUser}
+        }
+
+        case GET_USER_TYPE:{
+            return {...state, userType: action.userType}
         }
 
 

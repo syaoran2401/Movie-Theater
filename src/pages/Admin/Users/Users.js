@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
-import { Button, Input, Table } from 'antd';
+import React, { useEffect, useRef, useState } from 'react'
+import { Button, Input, Select, Table } from 'antd';
 import { history } from '../../../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListUserAction } from '../../../redux/action/UserManagementAction';
+import { deleteUserAction, getListUserAction } from '../../../redux/action/UserManagementAction';
 import { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import { EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import './user.css'
+import { GROUPID_00 } from '../../../util/Settings/config';
+import { SET_USER_INFO } from '../../../redux/types/UserTypes';
+
+
 
 
 
@@ -19,14 +22,18 @@ export default function Users() {
 
 
     const { listUser } = useSelector(state => state.UserManagementReducer);
+    const searchRef = useRef(null);
+    const [groupId, setGroupId] = useState(GROUPID_00);
+
 
     const data = listUser
 
     console.log("🚀 ~ file: Users.js ~ line 48 ~ Users ~ listUser", listUser);
 
+
     useEffect(() => {
-        dispatch(getListUserAction())
-    }, [])
+        dispatch(getListUserAction(groupId));
+    }, [groupId])
 
 
     const columns = [
@@ -45,17 +52,17 @@ export default function Users() {
                 },
             },
             sortDirections: ['descend', 'ascend'],
-            width:'15%'
+            width: '15%'
         },
         {
             title: 'Email',
             dataIndex: 'email',
-            width:'20%'
+            width: '20%'
         },
         {
             title: 'Phone number',
             dataIndex: 'soDt',
-            width:'15%'
+            width: '15%'
         },
         {
             title: 'User name',
@@ -72,16 +79,15 @@ export default function Users() {
                 },
             },
             sortDirections: ['descend', 'ascend'],
-            width:'15%'
+            width: '15%'
         },
         {
             title: 'Password',
             dataIndex: 'matKhau',
             render: (text, record, index) => {
-                console.log('record', record);
                 return <p>***************</p>
             },
-            width:'10%'
+            width: '10%'
         },
 
         {
@@ -89,48 +95,51 @@ export default function Users() {
             dataIndex: 'action',
             render: (text, record, index) => {
                 return <Fragment>
-                    <NavLink
+                    <span
                         key={1}
-                        className='text-2xl p-5' to={``}
-                        style={{ color: 'blue' }}
-                        onClick={() =>{
-                            
+                        className='text-2xl p-5'
+                        style={{ color: 'blue', cursor: 'pointer' }}
+                        onClick={() => {
+                            dispatch({
+                                type: SET_USER_INFO,
+                                userInfo: record
+                            })
+                            history.push(`/admin/user/editUser/${groupId}/${record.taiKhoan}`)
                         }}
                     >
                         <EditOutlined />
-                    </NavLink>
+                    </span>
 
                     <span className='text-2xl p-5'
                         key={2}
                         style={{ color: 'red', cursor: 'pointer' }}
                         onClick={() => {
-                            // if (window.confirm(`Are you sure you want to delete ${film.tenPhim}? `)) {
-                            //     //call delelte api
-                            //     dispatch(deleteMovieAction(film.maPhim))
-                            // }
+                            if (window.confirm(`Are you sure you want to delete ${record.taiKhoan}? `)) {
+                                dispatch(deleteUserAction(groupId, record.taiKhoan))
+                            }
                         }}
                     >
                         <DeleteOutlined />
                     </span>
 
-                    <NavLink
-                        key={3}
-                        className='text-2xl p-5' to={``}
-                        style={{ color: 'green' }}
-                    // onClick={() =>{
-                    //     localStorage.setItem("filmParams", JSON.stringify(film))
-                    // }}
-                    >
-                        <CalendarOutlined />
-                    </NavLink>
                 </Fragment>
             },
-            width:'20%'
+            width: '20%'
         },
     ];
 
-    const handleSearchChange = (v) => {
-        console.log(v)
+    const handleSearchChange = (e) => {
+        console.log(e.target.value)
+        if (!searchRef.current) {
+            clearTimeout(searchRef.current)
+        }
+
+        searchRef.current = setTimeout(() => {
+            dispatch(getListUserAction(groupId, e.target.value))
+        }, 300)
+
+
+
     }
 
 
@@ -139,19 +148,50 @@ export default function Users() {
     }
 
 
+    const handleChange = (value) => {
+        setGroupId(value)
+    }
+
+
+    const { Option } = Select;
+    const option = ["GP00", "GP01", "GP02", "GP03", "GP04", "GP05"];
+    const renderSelectOption = () => {
+        return option.map((group, index) => {
+            return <Option key={index} value={group}>{group}</Option>
+        })
+    }
+
+    console.log(groupId)
+
+
     return (
         <div className='userManagement'>
-            <h3 className='text-4xl text-bold text-center'>User Management</h3>
-            <Button className='mb-5' onClick={() => {
-                history.push('/admin/films/addNewUser')
-            }}>Add New User +</Button>
+            <h3 className='text-4xl text-bold text-center'>User Management {groupId}</h3>
+            <div className='flex justify-between items-center'>
+                <Button className='mb-5' onClick={() => {
+                    dispatch({
+                        type: SET_USER_INFO,
+                        userInfo: ""
+                    })
+                    history.push(`/admin/user/addNewUser/${groupId}`)
+                }}>Add New User +</Button>
+
+                <div className='flex justify-center items-center'>
+                    <p className='mb-0 text-lg mr-3'>Group type:</p>
+                    <Select defaultValue={`${groupId}`} onChange={handleChange}>
+                        {renderSelectOption()}
+                    </Select>
+                </div>
+            </div>
+
+
             <Input
                 placeholder="Search movie ..."
                 style={{ padding: '0.5rem 1rem', marginBottom: '1rem' }}
                 onChange={handleSearchChange}
             />
 
-            <Table columns={columns} dataSource={data} onChange={onChange} rowKey={'taiKhoan'}/>
+            <Table columns={columns} dataSource={data} onChange={onChange} rowKey={'taiKhoan'} />
         </div>
     )
 }

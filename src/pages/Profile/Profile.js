@@ -31,7 +31,7 @@ export default function Profile(props) {
         <div>
             <Row className="profile">
             
-                <Col span={`${(active.updateForm || active.bookTicketHistory) ? 7 : 7}`}>
+                <Col  span={`${(active.updateForm || active.bookTicketHistory) ? 7 : 7}`}>
                     <nav
                         className={`glass ${(active.updateForm || active.bookTicketHistory) ? "navActive" : ""}`}
                         style={{
@@ -42,7 +42,7 @@ export default function Profile(props) {
                         <img src="https://picsum.photos/200" alt="random pic" className="profilepic"></img>
                         <h1 className='text-3xl font-bold'>Hello {userInfo.hoTen}</h1>
                         <div className='mt-5 container'>
-                            <p style={{ color: "green" }}>Your account info:</p>
+                            <h5 style={{ color: "green" }}>Your account info:</h5>
                             <div className='mb-5'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Username:</p>
                                 <h5 className='text-gray-600'>{userInfo.taiKhoan}</h5>
@@ -95,7 +95,7 @@ export default function Profile(props) {
 
                
 
-                <Col span={`${(active.updateForm || active.bookTicketHistory) ? 17 : 0}`}>
+                <Col  span={`${(active.updateForm || active.bookTicketHistory) ? 17 : 0}`}>
                     <div className={`condiv  ${active.updateForm ? "activeUpdateForm " : ""}`}>
                         <UserUpdateform userInfo={userInfo} setActive={setActive} active={active} />
                     </div>

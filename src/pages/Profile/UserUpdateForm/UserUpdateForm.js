@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { updateUserInfoAction } from '../../../redux/action/UserManagementAction'
 import { useDispatch } from 'react-redux'
 import styled from "styled-components";
+import { CloseOutlined } from '@ant-design/icons'
 
 export default function UserUpdateform(props) {
     const { userInfo, active, setActive } = props
@@ -47,7 +48,7 @@ export default function UserUpdateform(props) {
 
 
         onSubmit: values => {
-          
+
             dispatch(updateUserInfoAction(values))
             let updateActive = { ...active }
             updateActive.updateForm = false;
@@ -83,7 +84,9 @@ export default function UserUpdateform(props) {
         <Fragment>
 
             <Row>
-                <Col flex="auto">  <h1 className="subtopic">User Info</h1></Col>
+                <Col flex="auto">
+                    <h1 className="subtopic">User Info</h1>
+                </Col>
                 <Col flex="none">
                     <div
                         style={{ cursor: 'pointer' }}
@@ -93,10 +96,10 @@ export default function UserUpdateform(props) {
                             updateActive.updateForm = false;
                             updateActive.bookTicketHistory = false
                             setActive(updateActive);
-                        }}>X</div>
+                        }}><CloseOutlined /></div>
                 </Col>
             </Row>
-          
+
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 className="mt-12"
@@ -154,8 +157,8 @@ export default function UserUpdateform(props) {
                                     </span>
                                 </Col>
                             </Row>
-                       
                         </DropDownHeader>
+
                         {isOpen && (
                             <DropDownListContainer>
                                 <DropDownList >
@@ -187,7 +190,7 @@ const DropDownContainer = styled("div")`
 `;
 
 const DropDownHeader = styled("div")`
-position: relative;
+    position: relative;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
     border-radius: 2rem  !important;

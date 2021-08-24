@@ -24,6 +24,7 @@ import Edit from './pages/Admin/Films/Edit/Edit';
 import Dashboard from './pages/Admin/Dashboard/Dashboard';
 import AddNewUser from './pages/Admin/Users/AddNewUser/AddNewUser';
 
+
 // import { Suspense, lazy } from 'react'  // Lazy loading ( thư viên react )
 
 // const CheckoutTemplateLazy = lazy(() => import('./templates/CheckoutTemplate/CheckoutTemplate'))
@@ -61,7 +62,8 @@ function App() {
         <AdminTemplate exact path='/admin/films/showtime/:id/:tenphim' Component={ShowTime} />
 
 
-        <AdminTemplate exact path='/admin/films/addNewUser' Component={AddNewUser} />
+        <AdminTemplate exact path='/admin/user/addNewUser/:groupID' Component={AddNewUser} />
+        <AdminTemplate exact path='/admin/user/editUser/:groupID/:userName' Component={AddNewUser} />
 
 
 

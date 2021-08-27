@@ -51,7 +51,7 @@ const MovieManagement = (state = initialState, action) => {
         
             state.dangChieu = !state.dangChieu
             state.arrMovie = state.arrMovieDefault.filter(movie => movie.dangChieu === state.dangChieu);
-            console.log('dang chieu', state.arrMovie)
+           
             return { ...state  }
         }
 
@@ -59,7 +59,7 @@ const MovieManagement = (state = initialState, action) => {
           
             state.sapChieu = !state.sapChieu
             state.arrMovie = state.arrMovieDefault.filter(movie => movie.sapChieu === state.sapChieu);
-            console.log('sap chieu', state.arrMovie)
+          
             return { ...state }
         }
 

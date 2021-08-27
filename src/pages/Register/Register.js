@@ -183,12 +183,12 @@ const RegisterForm = withFormik({
 
 
     handleSubmit: (values, { props }) => {
-        console.log(values)
+   
         let valid = null;
 
         for (let key in values) {
             if (key === "matKhau") {
-                console.log(values[key])
+              
                 if (values[key] === values.confirmPassword) {
                     valid = true
                 } else {
@@ -196,7 +196,7 @@ const RegisterForm = withFormik({
                 }
             }
         }
-        console.log("valid", valid)
+     
 
         if (valid) {
             props.dispatch(registerAction(values))

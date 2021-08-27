@@ -23,6 +23,7 @@ export default function Films() {
   
     useEffect(() => {
         dispatch(getListMovieAction())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

@@ -28,12 +28,13 @@ export default function Users() {
 
     const data = listUser
 
-    console.log("🚀 ~ file: Users.js ~ line 48 ~ Users ~ listUser", listUser);
+
 
 
     useEffect(() => {
         dispatch(getListUserAction(groupId));
-    }, [groupId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     const columns = [
@@ -129,7 +130,6 @@ export default function Users() {
     ];
 
     const handleSearchChange = (e) => {
-        console.log(e.target.value)
         if (!searchRef.current) {
             clearTimeout(searchRef.current)
         }
@@ -144,7 +144,7 @@ export default function Users() {
 
 
     const onChange = (pagination, filters, sorter, extra) => {
-        console.log('params', pagination, filters, sorter, extra);
+        // console.log('params', pagination, filters, sorter, extra);
     }
 
 
@@ -161,7 +161,6 @@ export default function Users() {
         })
     }
 
-    console.log(groupId)
 
 
     return (

@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import _ from 'lodash'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
-    DesktopOutlined,
     UserOutlined,
     FileAddOutlined,
-    HistoryOutlined,
     FileOutlined
 } from '@ant-design/icons';
 import { NavLink, Redirect, Route } from 'react-router-dom';
@@ -13,7 +11,7 @@ import { history } from '../../App';
 import { TOKEN, USER_LOGIN } from '../../util/Settings/config';
 import { useSelector } from 'react-redux';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 export default function AdminTemplate(props) {
 
@@ -29,7 +27,7 @@ export default function AdminTemplate(props) {
 
 
     const onCollapse = collapsed => {
-        console.log(collapsed);
+       
         setCollapsed(collapsed);
     };
 

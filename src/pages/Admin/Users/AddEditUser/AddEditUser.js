@@ -19,9 +19,7 @@ export default function AddNewUser(props) {
 
     useEffect(() => {
         dispatch(getUserTypeAction());
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [dispatch])
 
 
     const nameReg = /^[a-z ,.'-]+$/i;
@@ -50,7 +48,6 @@ export default function AddNewUser(props) {
         }),
 
         onSubmit: values => {
-        
             userInfo ? dispatch(editUserAction(values)) : dispatch(addUserAction(values))
 
         },

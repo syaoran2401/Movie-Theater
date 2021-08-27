@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Button, Select, Cascader, DatePicker, InputNumber } from 'antd';
+import { Form, Button, Select, DatePicker, InputNumber } from 'antd';
 import { theaterManagementService } from '../../../services/TheaterManagementService';
 import { useFormik } from 'formik';
 import moment from 'moment';
@@ -22,7 +22,7 @@ export default function ShowTime(props) {
         },
 
         onSubmit: async (values) => {
-            console.log(values)
+       
             try{
                 const result = await bookingTickerManager.createShowtime(values);
                 alert(result.data.content)
@@ -48,10 +48,10 @@ export default function ShowTime(props) {
                 theaterSystem: result.data.content
             })
 
-            console.log(state.theaterSystem)
         } catch (err) {
             console.log(err.response?.data)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -63,7 +63,7 @@ export default function ShowTime(props) {
     }
 
 
-    const arrayTheaterBrach = () => {
+    const arrayTheaterBranch = () => {
         return state.theaterBrach?.map((branch, index) => {
             return { label: branch.tenCumRap, value: branch.maCumRap }
         })
@@ -71,7 +71,6 @@ export default function ShowTime(props) {
 
 
     const handleChangeTheaterSystem = async (value) => {
-        console.log(value);
         try {
             let result = await theaterManagementService.getTheaterBranchInfo(value);
 
@@ -95,13 +94,13 @@ export default function ShowTime(props) {
 
     const onOk = (value) => {
         formik.setFieldValue('ngayChieuGioChieu', moment(value).format("DD/MM/YYYY hh:mm:ss"));
-        console.log(moment(value).format("DD/MM/YYYY hh:mm:ss"))
+      
     }
 
 
     const onChangeShowtime = (value) => {
         formik.setFieldValue('ngayChieuGioChieu', moment(value).format("DD/MM/YYYY hh:mm:ss"));
-        console.log(moment(value).format("DD/MM/YYYY hh:mm:ss"))
+        
     }
 
 
@@ -109,7 +108,7 @@ export default function ShowTime(props) {
         formik.setFieldValue('giaVe', value)
     }
 
-    console.log(props.match.params)
+   
 
     let film ={}
     if(localStorage.getItem('filmParams')){
@@ -139,7 +138,7 @@ export default function ShowTime(props) {
 
                 <Form.Item label="Theater Branch">
                     <Select
-                        options={arrayTheaterBrach()}
+                        options={arrayTheaterBranch()}
                         onChange={handleChangeTheaterBranch}
                         placeholder="Select Theater Branch"
                     />

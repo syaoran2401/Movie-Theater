@@ -21,17 +21,3 @@ export const getListTheaterSystemAction = () => {
     }
 }
 
-
-// export const getListShowTimeByTheater = (maHeThongRap) => {
-//     return async (dispatch) => {
-//         try {
-//             const { data } = await theaterManagementService.getListShowTimeByTheater(maHeThongRap);
-//             dispatch({
-//                 type: GET_LIST_SHOWTIME,
-//                 arrListShowTime: data.content
-//             })
-//         } catch (err) {
-//             console.log(err.response.data)
-//         }
-//     }
-// }

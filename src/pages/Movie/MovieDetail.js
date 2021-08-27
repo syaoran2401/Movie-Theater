@@ -18,10 +18,11 @@ export default function MovieDetail(props) {
     const dispatch = useDispatch()
     const { movieDetail } = useSelector(state => state.MovieManagement);
     const { maPhim } = props.match.params;
-    console.log({ movieDetail });
+
 
     useEffect(() => {
         dispatch(getMovieDetailAction(maPhim));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

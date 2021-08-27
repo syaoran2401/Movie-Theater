@@ -29,8 +29,8 @@ export const bookTicketAction = (thongTinDatVe = new BookTicketInfo()) => {
         try {
             dispatch(displayLoadingAction);
 
-            const result = await bookingTickerManager.bookTicket(thongTinDatVe);
-            console.log(result.data.content);
+             await bookingTickerManager.bookTicket(thongTinDatVe);
+           
 
             // Đặt vé thành công, gọi API load lại phòng vế
             await dispatch(getBookingTicketAction(thongTinDatVe.maLichChieu));
@@ -67,9 +67,9 @@ export const bookingSeatAction = (ghe, maLichChieu) => {
         // call API về backend
         let danhSachGheDangDat = getState().BookingTicketReducer.danhSachGheDangDat;
         let taiKhoan = getState().UserManagementReducer.userLoginInfo.taiKhoan;
-        console.log({ danhSachGheDangDat });
-        console.log({ taiKhoan });
-        console.log('maLichChieu', maLichChieu);
+        // console.log({ danhSachGheDangDat });
+        // console.log({ taiKhoan });
+        // console.log('maLichChieu', maLichChieu);
 
         // biến mảng thành chuỗi (khớp với dạng data type của backend )
         danhSachGheDangDat = JSON.stringify(danhSachGheDangDat)

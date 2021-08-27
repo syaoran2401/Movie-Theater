@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Slider from "react-slick";
 import { GET_COMING_MOVIE, GET_SHOWING_MOVIE } from "../../redux/types/MovieType";
-import Movie_Card from "../Movie/Movie_Card";
+import MovieCard from "../Movie/MovieCard";
 import './MultipleRow.css'
 import styleSlick from './MultipleRowStick.module.css'
 import { NavLink } from 'react-router-dom';
@@ -48,13 +48,13 @@ const MultipleRowsSlick = ({ arrMovie }) => {
         slidesPerRow: 2,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
-        variableWidth: true,
+        // variableWidth: true,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                     infinite: true,
                     dots: true
                 }
@@ -80,11 +80,10 @@ const MultipleRowsSlick = ({ arrMovie }) => {
     };
 
     const renderListMovie = () => {
-        console.log('arrMovie', arrMovie)
         return arrMovie.map((item, index) => {
             return <div key={index} className={`${styleSlick['width-item']} `} >
                 {/* <Movie itemMovie={item} /> */}
-                <Movie_Card itemMovie={item} />
+                <MovieCard  itemMovie={item} />
                 <NavLink to={`/movieDetail/${item.maPhim}`}>
                     <div className='flex items-center justify-around'>
                         <p className='text-lg text-yellow-300 text-left mt-4 mb-0 font-bold'>{item.tenPhim}</p>

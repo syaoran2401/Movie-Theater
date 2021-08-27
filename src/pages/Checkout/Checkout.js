@@ -26,7 +26,7 @@ function Checkout(props) {
     const { userLoginInfo } = useSelector(state => state.UserManagementReducer);
     const { ticketInfo, danhSachGheDangDat, danhSachGheKhachDangDat } = useSelector(state => state.BookingTicketReducer);
     const { thongTinPhim, danhSachGhe } = ticketInfo
-    console.log({ danhSachGheDangDat });
+    // console.log({ danhSachGheDangDat });
     let tongThanhTien = danhSachGheDangDat.reduce((tongTien, ghe, index) => {
         return tongTien += ghe.giaVe;
     }, 0).toLocaleString()
@@ -98,7 +98,7 @@ function Checkout(props) {
 
         // load danh sách ghế đang đặt từ server về (realTime)
         connection.on('loadDanhSachGheDaDat', (dsGheKhachDat) => {
-            console.log('danhSachGheKhachDat', dsGheKhachDat)
+            // console.log('danhSachGheKhachDat', dsGheKhachDat)
 
             // Bước 1: loại mình ra khỏi danh sách hiển thị
             dsGheKhachDat = dsGheKhachDat.filter(item => item.taiKhoan !== userLoginInfo.taiKhoan);
@@ -118,7 +118,7 @@ function Checkout(props) {
                 arrGheKhachDat
             })
 
-            console.log('arrGheKhachDat', arrGheKhachDat)
+            // console.log('arrGheKhachDat', arrGheKhachDat)
         })
 
 
@@ -130,6 +130,7 @@ function Checkout(props) {
             window.removeEventListener('beforeunload', clearGhe)
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const clearGhe = event => {
@@ -213,7 +214,7 @@ function Checkout(props) {
                             const bookTicketInfo = new BookTicketInfo();
                             bookTicketInfo.maLichChieu = props.match.params.maLichChieu;
                             bookTicketInfo.danhSachVe = danhSachGheDangDat;
-                            console.log(bookTicketInfo);
+                            // console.log(bookTicketInfo);
 
                             dispatch(bookTicketAction(bookTicketInfo))
                         }}>
@@ -247,9 +248,10 @@ export default function CheckoutTab(props) {
                 number: "1"
             })
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    console.log("🚀 ~ file: Checkout.js ~ line 242 ~ CheckoutTab ~ userLoginInfo", userLoginInfo)
+    
 
     const operations = <Fragment>
         {!_.isEmpty(userLoginInfo) ?
@@ -315,9 +317,9 @@ export default function CheckoutTab(props) {
 function KetQuaDatVe(props) {
 
     const dispatch = useDispatch()
-    const { userInfo, userLoginInfo } = useSelector(state => state.UserManagementReducer)
+    const { userInfo } = useSelector(state => state.UserManagementReducer)
 
-    console.log({ userInfo });
+
 
 
     const renderTicketItem = () => {
@@ -325,7 +327,7 @@ function KetQuaDatVe(props) {
             const seats = _.first(item.danhSachGhe);
             return <div key={index} className="p-2 lg:w-1/3 md:w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                    <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={item.hinhAnh} alt={item.tenPhim} onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/200/300' }} />
+                    <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={item.hinhAnh}  onError={(e) => { e.target.onerror = null; e.target.src = 'https://picsum.photos/200/300' }} />
                     <div className="flex-grow">
                         <h2 className="title-font font-medium text-red-600 text-2xl">{item.tenPhim}</h2>
                         <p className="text-gray-500">Giờ Chiếu: {moment(item.ngayDat).format('hh:mm A')} - Ngày Chiếu: {moment(item.ngayDat).format('DD-MM-YYYY')}</p>
@@ -346,6 +348,7 @@ function KetQuaDatVe(props) {
 
     useEffect(() => {
         dispatch(getUserInfoAction())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

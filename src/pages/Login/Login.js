@@ -1,23 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginAction } from '../../redux/action/UserManagementAction';
 
 
 export default function Login() {
 
     const dispatch = useDispatch();
-    const { userLoginInfo } = useSelector(state => state.UserManagementReducer);
-    console.log({ userLoginInfo })
+  
+   
     const formik = useFormik({
         initialValues: {
             taiKhoan: '',
             matKhau: '',
         },
         onSubmit: values => {
-            console.log('values', values)
-
             dispatch(loginAction(values))
         },
     });

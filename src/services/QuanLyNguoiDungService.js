@@ -1,4 +1,4 @@
-import { GROUPID_00 } from "../util/Settings/config";
+
 import { BaseService } from "./BaseService";
 
 export class QuanLyNguoiDungService extends BaseService {

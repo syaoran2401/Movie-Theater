@@ -2,6 +2,7 @@
 
 
 export class ShowingTimeInfo {
+    // eslint-disable-next-line no-use-before-define
     thongTinPhim = new MovieDetail();
     danhSachGhe = [];
 

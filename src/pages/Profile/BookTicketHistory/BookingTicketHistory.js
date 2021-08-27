@@ -30,7 +30,7 @@ export default function BookingTicketHistory(props) {
         }
     }
 
-    console.log('state', state)
+  
 
     const renderMovieTicket = () => {
         return ticketInfo?.slice(state.minValue, state.maxValue).map((ticket, index) => {

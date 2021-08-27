@@ -17,6 +17,7 @@ export default function Home(props) {
     useEffect(() => {
         dispatch(getListMovieAction());
         dispatch(getListTheaterSystemAction())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

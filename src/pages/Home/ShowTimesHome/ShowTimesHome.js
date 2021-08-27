@@ -8,7 +8,7 @@ export default function ShowTimesHome(props) {
 
 
     const { arrTheaterSystem } = props;
-    console.log('arrTheaterSystem', arrTheaterSystem)
+
 
 
     const { TabPane } = Tabs;
@@ -18,6 +18,7 @@ export default function ShowTimesHome(props) {
 
     const renderTheaterSystem = () => {
         return arrTheaterSystem.map((item, index) => {
+
             return <TabPane
                 tab={<img className='rounded-none w-12 h-12' src={item.logo} alt={item.logo} />}
                 key={index} >
@@ -39,7 +40,6 @@ export default function ShowTimesHome(props) {
                         <div className='text-left ml-5'>
                             <p className='text-base mb-0'>{theater.tenCumRap}</p>
                             {theater.diaChi.length > 30 ? <p className='text-base mb-0'>{theater.diaChi.slice(0, 30)}...</p> : <p className='text-base mb-0'>{theater.diaChi}</p>}
-
                         </div>
                     </div>
                 }
@@ -67,7 +67,7 @@ export default function ShowTimesHome(props) {
                             {film.hot ? <p className='iconHot'>Hot</p> : <p className='p-5'></p>}
                             <h1 className='mb-0 mx-5 font-bold text-2xl tracking-wider text-green-700'>{film.tenPhim}</h1>
                         </div>
-                        {diaChi.length > 20 ? <p className=' text-xl pl-16 mt-4'>{diaChi.slice(0, 20)}...</p> : { diaChi }}
+                        {diaChi.length > 20 ? <p className=' text-xl pl-16 mt-4'>{diaChi.slice(0, 20)}...</p> : <p>{diaChi}</p>}        
 
                         {/* Show Time schedule */}
                         <div className='grid grid-cols-5 gap-2 pl-16'>
@@ -81,7 +81,6 @@ export default function ShowTimesHome(props) {
     }
 
     const renderShowTime = (filmShowTime, maPhim) => {
-        console.log(filmShowTime[0].maLichChieu)
         return filmShowTime.slice(0, 10).map((timeSchedule, index) => {
             return <NavLink key={index} className='buttonNavLink' to={`/checkout/${filmShowTime[0].maLichChieu}`}>
                 {moment(timeSchedule.ngayChieuGioChieu).format('hh:mm A')}

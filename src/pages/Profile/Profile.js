@@ -23,9 +23,10 @@ export default function Profile(props) {
 
     useEffect(() => {
         dispatch(getUserInfoAction())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
+   
     return (
 
         <div>
@@ -43,22 +44,22 @@ export default function Profile(props) {
                         <h1 className='text-3xl font-bold'>Hello {userInfo.hoTen}</h1>
                         <div className='mt-5 container'>
                             <h5 style={{ color: "green" }}>Your account info:</h5>
-                            <div className='mb-5'>
+                            <div className='mb-8'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Username:</p>
                                 <h5 className='text-gray-600'>{userInfo.taiKhoan}</h5>
                             </div>
 
-                            <div className='mb-5'>
+                            <div className='mb-8'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Name: </p>
                                 <h5 className='text-gray-600'>{userInfo.hoTen}</h5>
                             </div>
 
-                            <div className='mb-5'>
+                            <div className='mb-8'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Email:</p>
                                 <h5 className='text-gray-600'>{userInfo.email}</h5>
                             </div>
 
-                            <div className='mb-5'>
+                            <div className='mb-8'>
                                 <p className='text-black' style={{ marginBottom: '0.5rem' }}>Phone Number:</p>
                                 <h5 className='text-gray-600'>{userInfo.soDT}</h5>
                             </div>
@@ -108,3 +109,4 @@ export default function Profile(props) {
         </div >
     )
 }
+

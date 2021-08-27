@@ -1,5 +1,4 @@
 import { GROUP_ID_GP01 } from "../redux/types/TheaterType";
-import { GROUPID_00 } from "../util/Settings/config";
 import { BaseService } from "./BaseService";
 
 export class QuanLyPhimService extends BaseService{

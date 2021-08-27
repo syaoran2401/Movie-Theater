@@ -11,7 +11,6 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { addMovieUploadImgAction } from '../../../../redux/action/MovieAction';
-import { GROUP_ID_GP01 } from '../../../../redux/types/TheaterType';
 
 
 
@@ -49,7 +48,7 @@ const AddNew = () => {
                 }
             }
 
-            console.log('formik', formData.get(values.maNhom));
+            // console.log('formik', formData.get(values.maNhom));
             dispatch(addMovieUploadImgAction(formData))
         
         }

@@ -26,12 +26,13 @@ const Edit = (props) => {
 
     const dispatch = useDispatch();
 
-    console.log("🚀 ~ file: Edit.js ~ line 28 ~ Edit ~ movieInfo", movieInfo)
+ 
     useEffect(() => {
 
         let { id } = props.match.params;
 
         dispatch(getMovieInfoAction(id))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -53,7 +54,7 @@ const Edit = (props) => {
 
         onSubmit: (values) => {
             values.maNhom = GROUPID_00
-            console.log(values)
+        
             let formData = new FormData();
             for (let key in values) {
                 if (key !== 'hinhAnh') {
@@ -68,16 +69,12 @@ const Edit = (props) => {
             }
 
 
-            console.log(values)
-
             dispatch(updateMovieUploadAction(formData))
 
         }
     })
 
     const handleChangeDatePicker = (value, date, dateString) => {
-        let ngayKhoiChieu = moment(value)
-        console.log("🚀 ~ file: Edit.js ~ line 78 ~ handleChangeDatePicker ~ ngayKhoiChieu", ngayKhoiChieu)
         formik.setFieldValue('ngayKhoiChieu', value)
     }
 

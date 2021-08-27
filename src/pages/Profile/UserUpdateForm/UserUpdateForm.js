@@ -7,6 +7,7 @@ import { updateUserInfoAction } from '../../../redux/action/UserManagementAction
 import { useDispatch } from 'react-redux'
 import styled from "styled-components";
 import { CloseOutlined } from '@ant-design/icons'
+import { DropDownContainer, DropDownHeader, DropDownList, DropDownListContainer, ListItem } from '../../../components/StyleComponent/StyleComponent';
 
 export default function UserUpdateform(props) {
     const { userInfo, active, setActive } = props
@@ -106,25 +107,25 @@ export default function UserUpdateform(props) {
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 10 }}
             >
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Username">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} label="Username">
                     <Input disabled={true} className='inputField' name='taiKhoan' value={formik.values.taiKhoan} />
                 </Form.Item>
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Password">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} label="Password">
                     <Input className='inputField' name='matKhau' value={formik.values.matKhau} onChange={formik.handleChange} />
                     {formik.touched.matKhau && formik.errors.matKhau ? <div className='mt-3'>{formik.errors.matKhau}</div> : null}
                 </Form.Item>
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Name">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} label="Name">
                     <Input className='inputField' name='hoTen' value={formik.values.hoTen} onChange={formik.handleChange} />
                     {formik.touched.hoTen && formik.errors.hoTen ? <div className='mt-3'>{formik.errors.hoTen}</div> : null}
                 </Form.Item>
 
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Phone">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} label="Phone">
                     <Input className='inputField' name='soDT' value={formik.values.soDT} onChange={formik.handleChange} />
                     {formik.touched.soDT && formik.errors.soDT ? <div className='mt-3'>{formik.errors.soDT}</div> : null}
                 </Form.Item>
@@ -132,19 +133,19 @@ export default function UserUpdateform(props) {
 
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Email">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} label="Email">
                     <Input className='inputField' name='email' value={formik.values.email} onChange={formik.handleChange} />
                     {formik.touched.email && formik.errors.email ? <div className='mt-3'>{formik.errors.email}</div> : null}
                 </Form.Item>
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} label="Group">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} label="Group">
                     <Input className='inputField' name='maNhom' value={formik.values.maNhom} onChange={formik.handleChange} />
                     {formik.touched.maNhom && formik.errors.maNhom ? <div className='mt-3'>{formik.errors.maNhom}</div> : null}
                 </Form.Item>
 
 
 
-                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: '1.6rem', textAlign: 'center' }} name='maLoaiNguoiDung' label="Type">
+                <Form.Item style={{ display: 'flex', alignItems: 'center', marginBottom: 'rem', textAlign: 'center' }} name='maLoaiNguoiDung' label="Type">
                     <DropDownContainer>
 
 
@@ -174,7 +175,7 @@ export default function UserUpdateform(props) {
                 </Form.Item>
 
 
-                <div className='text-center '>
+                <div className='text-center my-12'>
                     <button className='customButton'>Update</button>
                 </div>
 
@@ -184,57 +185,57 @@ export default function UserUpdateform(props) {
     )
 }
 
-const DropDownContainer = styled("div")`
-  margin: 0 auto;
-  width:80%
-`;
+// const DropDownContainer = styled("div")`
+//   margin: 0 auto;
+//   width:80%
+// `;
 
-const DropDownHeader = styled("div")`
-    position: relative;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
-    border-radius: 2rem  !important;
-    width: 100%  !important;
-    height: 3rem  !important;
-    padding: 1rem  !important;
-    border: none  !important;
-    outline: none  !important;
-    color: #3c354e  !important;
-    font-size: 1rem  !important;
-    font-weight: bold  !important;
-    text-align: center!important;
-`;
+// const DropDownHeader = styled("div")`
+//     position: relative;
+//     background: rgba(255, 255, 255, 0.15);
+//     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
+//     border-radius: 2rem  !important;
+//     width: 100%  !important;
+//     height: 3rem  !important;
+//     padding: 1rem  !important;
+//     border: none  !important;
+//     outline: none  !important;
+//     color: #3c354e  !important;
+//     font-size: 1rem  !important;
+//     font-weight: bold  !important;
+//     text-align: center!important;
+// `;
 
-const DropDownListContainer = styled("div")`
-    position: absolute;
-    width: 80%;
-    z-index: 99999999;
+// const DropDownListContainer = styled("div")`
+//     position: absolute;
+//     width: 80%;
+//     z-index: 99999999;
 
-`;
+// `;
 
-const DropDownList = styled("ul")`
-  padding: 0;
-  margin: 0;
-  padding-bottom:0.1rem;
-  background: #A57CB7;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
-  box-sizing: border-box;
-  color: #3c354e ;
-  font-size: 1rem ;
-  font-weight: 500;
-  cursor: pointer;
-  &:first-child {
-    padding-top: 0.8em;
-  }
+// const DropDownList = styled("ul")`
+//   padding: 0;
+//   margin: 0;
+//   padding-bottom:0.1rem;
+//   background: #A57CB7;
+//   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) ;
+//   box-sizing: border-box;
+//   color: #3c354e ;
+//   font-size: 1rem ;
+//   font-weight: 500;
+//   cursor: pointer;
+//   &:first-child {
+//     padding-top: 0.8em;
+//   }
  
-`;
+// `;
 
-const ListItem = styled("li")`
-  width:90%;
-  list-style: none;
-  margin:0 auto 10px;
+// const ListItem = styled("li")`
+//   width:90%;
+//   list-style: none;
+//   margin:0 auto 10px;
 
-  &:hover{
-    background: rgba(255, 255, 255, 0.15) 
-  }
-`;
+//   &:hover{
+//     background: rgba(255, 255, 255, 0.15) 
+//   }
+// `;

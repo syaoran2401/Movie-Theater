@@ -3,7 +3,7 @@ import { GET_LIST_USER, GET_USER_TYPE, LOGIN_ACTION, SET_USER_INFO } from "../ty
 import { history } from '../../App'
 import { displayLoadingAction, hideLoadingAction } from "./LoadingAction";
 import { notifyFunction } from "../../util/Settings/Notification/notificationMovie";
-import { GROUPID_00 } from "../../util/Settings/config";
+
 
 
 export const loginAction = (loginInfo) => {
@@ -11,7 +11,7 @@ export const loginAction = (loginInfo) => {
         try {
             const result = await quanLyNguoiDungService.getUserLoginInfo(loginInfo);
             if (result.data.statusCode === 200) {
-                console.log('result', result)
+             
                 dispatch({
                     type: LOGIN_ACTION,
                     userLoginInfo: result.data.content
@@ -27,7 +27,7 @@ export const loginAction = (loginInfo) => {
 }
 
 export const registerAction = (userSignUpInfo) => {
-    console.log('userSignUpInfo', userSignUpInfo)
+    
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.registAccount(userSignUpInfo);
@@ -48,7 +48,6 @@ export const getUserInfoAction = () => {
             // dispatch(displayLoadingAction);
             const result = await quanLyNguoiDungService.getUserInfo();
             if (result.data.statusCode === 200) {
-                console.log('result', result)
                 dispatch({
                     type: SET_USER_INFO,
                     userInfo: result.data.content
@@ -67,7 +66,6 @@ export const updateUserInfoAction = (model) => {
     return async dispatch => {
         try {
             const result = await quanLyNguoiDungService.updateUserinfo(model);
-            console.log(result)
             if (result.data.statusCode === 200) {
                 dispatch(getUserInfoAction())
                 notifyFunction('success', 'Congratulations', 'Account updated successfully !')

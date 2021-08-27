@@ -6,7 +6,7 @@ import { displayLoadingAction, hideLoadingAction } from './LoadingAction';
 import { notifyFunction } from '../../util/Settings/Notification/notificationMovie';
 
 export const getListMovieAction = (tenPhim = "") => {
-    console.log(tenPhim)
+  
     return async (dispatch) => {
         try {
             const res = await quanlyPhimService.getListMovie(tenPhim);

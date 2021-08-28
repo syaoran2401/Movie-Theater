@@ -88,15 +88,15 @@ export default function AdminTemplate(props) {
                                 <NavLink to="/admin/users">Users</NavLink>
                             </Menu.Item>
 
-                            <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
                                 <Menu.Item key="10" icon={<FileOutlined />}>
                                     <NavLink to="/admin/films">Films</NavLink>
                                 </Menu.Item>
+                            {/* <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
 
                                 <Menu.Item key="11" icon={<FileAddOutlined />}>
                                     <NavLink to="/admin/films/addnew">Add New Movie</NavLink>
                                 </Menu.Item>
-                            </SubMenu>
+                            </SubMenu> */}
 
                             {/* <Menu.Item key="3" icon={<HistoryOutlined />}>
                                 <NavLink to="/admin/showtimes">Showtime</NavLink>

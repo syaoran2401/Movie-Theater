@@ -5,7 +5,6 @@ import { Form, Input, Row, Col } from 'antd'
 import * as Yup from "yup";
 import { updateUserInfoAction } from '../../../redux/action/UserManagementAction'
 import { useDispatch } from 'react-redux'
-import styled from "styled-components";
 import { CloseOutlined } from '@ant-design/icons'
 import { DropDownContainer, DropDownHeader, DropDownList, DropDownListContainer, ListItem } from '../../../components/StyleComponent/StyleComponent';
 

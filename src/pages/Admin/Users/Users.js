@@ -136,11 +136,9 @@ export default function Users() {
 
         searchRef.current = setTimeout(() => {
             dispatch(getListUserAction(groupId, e.target.value))
-        }, 300)
-
-
-
+        }, 1500)
     }
+
 
 
     const onChange = (pagination, filters, sorter, extra) => {
@@ -149,7 +147,8 @@ export default function Users() {
 
 
     const handleChange = (value) => {
-        setGroupId(value)
+        setGroupId(value);
+        dispatch(getListUserAction(value));
     }
 
 

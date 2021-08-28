@@ -6,11 +6,15 @@ import {
     InputNumber,
     Switch,
     Button,
+    Row,
+    Col,
 } from 'antd';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { addMovieUploadImgAction } from '../../../../redux/action/MovieAction';
+import { history } from '../../../../App';
+import { LeftOutlined } from '@ant-design/icons'
 
 
 
@@ -36,7 +40,7 @@ const AddNew = () => {
         },
 
         onSubmit: (values) => {
-        //    values.maNhom = GROUP_ID_GP01
+            //    values.maNhom = GROUP_ID_GP01
             let formData = new FormData();
             for (let key in values) {
                 if (key !== 'hinhAnh') {
@@ -50,7 +54,7 @@ const AddNew = () => {
 
             // console.log('formik', formData.get(values.maNhom));
             dispatch(addMovieUploadImgAction(formData))
-        
+
         }
     })
 
@@ -103,8 +107,27 @@ const AddNew = () => {
                 initialValues="large"
                 size="large"
             >
-                <h3 className='text-4xl text-center mb-20'>Add New Movie</h3>
-            
+
+                <Row>
+                    <Col flex='none'>
+                        <div
+                            className='flex justify-center items-center '
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => {
+                                history.push('/admin/films')
+                            }}
+                        >
+                            <LeftOutlined />
+                            <p className='text-xl mb-0 ml-3' >Back</p>
+
+                        </div>
+                    </Col>
+                    <Col flex='auto'>
+                        <h3 className='text-4xl text-bold text-center mb-20'>Add New Movie</h3>
+                    </Col>
+                </Row>
+
+
                 <Form.Item label="Name Movie">
                     <Input name="tenPhim" onChange={formik.handleChange} />
                 </Form.Item>
@@ -144,7 +167,7 @@ const AddNew = () => {
                     />
                 </Form.Item>
 
-                
+
                 <Form.Item wrapperCol={{ offset: 12, span: 16 }}>
                     <Button type="primary" htmlType="submit">
                         Add movie

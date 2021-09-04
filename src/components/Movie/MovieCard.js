@@ -64,10 +64,10 @@ export default function Movie_Card({ itemMovie }) {
                     <p className='leading-relaxed text-sm'>{itemMovie.moTa.length > 100 ? <span>{itemMovie.moTa.slice(0, 100)}...</span> : <span>{itemMovie.moTa}</span>}</p>
                 </div>
                 <div>
-                    <div className='movie-groupId ' style={{ top: '85%' }}>
+                    <div className='movie-groupId ' style={{ top: '5%' }}>
                         {itemMovie.maNhom}
                     </div>
-                    <div className='movieRate' style={{ top: '85%' }}>
+                    <div className='movieRate' style={{ top: '5%' }}>
                         {itemMovie.danhGia}
                     </div>
                 </div>

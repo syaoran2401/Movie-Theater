@@ -171,16 +171,56 @@ p
 }
 
 .movieRate{
-  @apply text-red-300 absolute font-bold text-lg  left-72 w-10 h-8 leading-7 bg-black bg-opacity-60 rounded-md text-center
+  @apply text-red-300 absolute font-bold text-lg  left-56 w-10 h-8 leading-7 bg-black bg-opacity-60 rounded-md text-center
 }
 
 .movieName{
   @apply sm:text-2xl text-xl font-medium text-white text-center mt-5
 }
 
+@media screen and (max-width:1380px){
+  .movieRate{
+     left:12rem 
+  }
+}
+
+
+@media screen and (max-width:992px){
+  .movieRate{
+     left:28rem 
+  }
+}
+
+@media screen and (min-width:769px) and (max-width:992px){
+  .movieRate{
+     left:23rem 
+  }
+}
+
+
 
 @media screen and (max-width:768px){
     .movieRate{
-       left:14rem
+       left:17rem 
     }
+}
+
+
+@media screen and (max-width:675px){
+  .movieRate{
+     left:15rem
+  }
+}
+
+
+@media screen and (max-width:600px){
+  .movieRate{
+     left:13rem
+  }
+}
+
+@media screen and (max-width:555px){
+  .movieRate{
+     left:9rem !important
+  }
 }

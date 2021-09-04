@@ -38,37 +38,47 @@ const MultipleRowsSlick = ({ arrMovie }) => {
     const dispatch = useDispatch();
 
     const settings = {
-        className: "center",
-        centerMode: true,
-        infinite: true,
-        centerPadding: "60px",
-        slidesToShow: 3,
+        // className: "center",
+        // centerMode: true,
+        // infinite: true,
+        // centerPadding: "60px",
+        // slidesToShow: 3,
+        // speed: 500,
+        // rows: 1,
+        // slidesPerRow: 2,
+
+ 
+        infinite: false,
         speed: 500,
-        rows: 1,
-        slidesPerRow: 2,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+            slidesPerRow: 2,
+
+
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         // variableWidth: true,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1700,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                     infinite: true,
                     dots: true
                 }
             },
             {
-                breakpoint: 769,
+                breakpoint: 1300,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
+                    initialSlide: 1
                 }
             },
             {
-                breakpoint: 540,
+                breakpoint: 1000,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 2,

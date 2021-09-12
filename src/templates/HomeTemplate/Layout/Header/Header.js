@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css'
-import { Select } from 'antd';
+import { Button, Col, Row, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import _ from "lodash";
 import { Fragment } from 'react';
 import { TOKEN, USER_LOGIN } from '../../../../util/Settings/config';
 import { history } from '../../../../App';
+import { Menu } from 'antd';
 import {
-
     UnorderedListOutlined
 } from '@ant-design/icons';
 
 const { Option } = Select;
+
 
 
 
@@ -103,9 +104,7 @@ export default function Header() {
                         <li className="flex relative navLink">
                             <NavLink to='/contact' className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600 text-white font-bold hover:text-white">{t("CONTACT")}</NavLink>
                         </li>
-                        {/* <li className="flex relative navLink">
-                            <NavLink to='/news' className="flex items-center -mb-0.5 border-b-2 px-4 border-transparent text-violet-600 border-violet-600 text-white font-bold hover:text-white">{t("COMING MOVIE")}</NavLink>
-                        </li> */}
+                  
 
 
 

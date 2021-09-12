@@ -69,7 +69,7 @@ export default function BookingTicketHistory(props) {
     return (
         <Fragment>
             <Row>
-                <Col flex="auto">  <h1 className="subtopic">Ticket Booked</h1></Col>
+                <Col flex="auto">  <h1 className="subtopic">Ticket Book</h1></Col>
                 <Col flex="none">
                     <div
                         style={{ cursor: 'pointer' }}

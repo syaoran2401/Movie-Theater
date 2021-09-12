@@ -89,8 +89,7 @@ export default function AdminTemplate(props) {
                                 <Menu.Item key="10" icon={<FileOutlined />}>
                                     <NavLink to="/admin/films">Films</NavLink>
                                 </Menu.Item>
-                         
-
+                       
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">

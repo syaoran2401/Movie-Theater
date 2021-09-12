@@ -37,7 +37,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy":"npm run build && cd build && copy index.html 200.html && surge"
   },
   "eslintConfig": {
     "extends": [

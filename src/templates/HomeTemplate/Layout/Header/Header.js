@@ -1,28 +1,19 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css'
-import { Button, Col, Row, Select } from 'antd';
+import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import _ from "lodash";
 import { Fragment } from 'react';
 import { TOKEN, USER_LOGIN } from '../../../../util/Settings/config';
 import { history } from '../../../../App';
-import Sider from 'antd/lib/layout/Sider';
-import { Menu } from 'antd';
 import {
-    AppstoreOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    PieChartOutlined,
-    DesktopOutlined,
-    ContainerOutlined,
-    MailOutlined,
+
     UnorderedListOutlined
 } from '@ant-design/icons';
 
 const { Option } = Select;
-const { SubMenu } = Menu;
 
 
 

@@ -3,7 +3,6 @@ import _ from 'lodash'
 import { Layout, Menu } from 'antd';
 import {
     UserOutlined,
-    FileAddOutlined,
     FileOutlined
 } from '@ant-design/icons';
 import { NavLink, Redirect, Route } from 'react-router-dom';
@@ -12,7 +11,6 @@ import { TOKEN, USER_LOGIN } from '../../util/Settings/config';
 import { useSelector } from 'react-redux';
 
 const { Header, Content, Sider } = Layout;
-const { SubMenu } = Menu;
 export default function AdminTemplate(props) {
 
 
@@ -91,16 +89,7 @@ export default function AdminTemplate(props) {
                                 <Menu.Item key="10" icon={<FileOutlined />}>
                                     <NavLink to="/admin/films">Films</NavLink>
                                 </Menu.Item>
-                            {/* <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
-
-                                <Menu.Item key="11" icon={<FileAddOutlined />}>
-                                    <NavLink to="/admin/films/addnew">Add New Movie</NavLink>
-                                </Menu.Item>
-                            </SubMenu> */}
-
-                            {/* <Menu.Item key="3" icon={<HistoryOutlined />}>
-                                <NavLink to="/admin/showtimes">Showtime</NavLink>
-                            </Menu.Item> */}
+                         
 
                         </Menu>
                     </Sider>

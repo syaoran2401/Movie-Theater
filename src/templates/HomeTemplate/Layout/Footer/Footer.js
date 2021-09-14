@@ -8,24 +8,24 @@ export default function Footer(props) {
 
     const { arrTheaterSystem } = useSelector(state => state.TheaterManagementReducer);
 
-    const arrListTheaterSystem = _.map(arrTheaterSystem, (theaterSystem) => _.pick(theaterSystem, ['maHeThongRap', 'tenHeThongRap','logo']));
+    const arrListTheaterSystem = _.map(arrTheaterSystem, (theaterSystem) => _.pick(theaterSystem, ['maHeThongRap', 'tenHeThongRap', 'logo']));
     // console.log('arrListTheaterSystem', arrListTheaterSystem);
 
-    const renderPartnerLogo = () =>{
-        return arrListTheaterSystem.map((item, index)=>{
+    const renderPartnerLogo = () => {
+        return arrListTheaterSystem.map((item, index) => {
             return <li key={index} className='list-none'>
                 <img className='w-4/5 h-4/5' src={item.logo} alt={item.tenHeThongRap} />
             </li>
         })
     }
 
-    return(
+    return (
         <div>
             <footer className="py-4 bg-coolGray-100 text-coolGray-900 bg-gray-500 text-white relative" style={{ background: `url(${footerImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <div className='layer'></div>
                 <div className="px-6 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 z-5 w-9/12 mx-auto py-20">
                     <div className="grid grid-cols-12">
-                        <div className=" pb-6 col-span-3 md:pb-0 md:col-span-3 z-10">
+                        <div className="xs:hidden xl:block pb-6 col-span-3 md:pb-0 md:col-span-3 z-10">
                             <a href="#Home">
                                 <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt='footer-logo' className='mb-16' />
 
@@ -36,14 +36,14 @@ export default function Footer(props) {
                             </div>
                         </div>
 
-                        <div className="col-span-3 text-center md:text-left z-10 middleCol">
+                        <div className="xs:hidden md:block md:col-span-4 lg:col-span-4 xl:col-span-3 2xl:col-span-3 text-center md:text-left z-10 middleCol middleCol__left">
                             <p className="pb-1 text-lg font-medium bold">Partner</p>
                             <div className='grid grid-cols-3 gap-9'>
-                               {renderPartnerLogo()}
+                                {renderPartnerLogo()}
                             </div>
                         </div>
 
-                        <div className="col-span-3 text-center md:text-left md:col-span-3 z-10 middleCol">
+                        <div className="xs:col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-4 xl:col-span-3 2xl:col-span-3 text-center md:text-left  z-10 middleCol middleCol__right">
                             <p className="pb-1 text-lg font-medium bold">Policy</p>
                             <ul>
                                 <li>
@@ -58,7 +58,7 @@ export default function Footer(props) {
                             </ul>
                         </div>
 
-                        <div className="col-span-3 md:text-left md:col-span-3 z-10 text-center rightCol">
+                        <div className="xs:col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-4 xl:col-span-3 2xl:col-span-3 md:text-left  z-10 text-center rightCol">
                             <p className="pb-1 text-lg font-medium bold">Account</p>
                             <ul>
                                 <li>
@@ -78,10 +78,10 @@ export default function Footer(props) {
                     </div>
                 </div>
 
-                <div className='border-t-2 z-10 pt-5 pb-3 footerBot'>
-                    <div className='flex justify-between w-3/4 mx-auto'>
-                        <a href="#home" className='z-10 pl-6'>Văn Trần Trúc Phương</a>
-                        <a href="#home" className='z-10 pr-40'>Back to top</a>
+                <div className='border-t-2 z-10 pt-5 pb-5 container mx-auto footerBot'>
+                    <div className='flex justify-between '>
+                        <a href="#home" className='z-10  whitespace-nowrap'>Văn Trần Trúc Phương</a>
+                        <a href="#home" className='z-10 whitespace-nowrap '>Back to top</a>
                     </div>
                 </div>
             </footer>

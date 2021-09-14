@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovieDetailAction } from '../../redux/action/MovieAction';
 import './movieDetail.css'
-import { Tabs,Rate } from 'antd';
+import { Tabs, Rate } from 'antd';
 import { CustomCard } from '@tsamantanis/react-glassmorphism'
 import '@tsamantanis/react-glassmorphism/dist/index.css'
 import { NavLink } from 'react-router-dom';
@@ -22,12 +22,12 @@ export default function MovieDetail(props) {
 
     useEffect(() => {
         dispatch(getMovieDetailAction(maPhim));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
 
-    let thoiGianChieu = moment(new Date(movieDetail.ngayKhoiChieu)).format("DD.MM.YYYY");
+    let thoiGianChieu = moment(new Date(movieDetail.ngayKhoiChieu)).format("MMMM DD,YYYY");
 
     // Hệ Thống Rap
     const renderTheatherSystem = () => {
@@ -59,7 +59,7 @@ export default function MovieDetail(props) {
 
                 {/* Thoi Gian Chieu */}
                 <div className='grid grid-cols-5'>
-                {item.lichChieuPhim?.slice(0,10).map((lichChieu, index) => {
+                    {item.lichChieuPhim?.slice(0, 10).map((lichChieu, index) => {
                         // let gioChieu = lichChieu.ngayChieuGioChieu.substr(11, 5);
                         let gioChieu = moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')
                         return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className='mb-8'>
@@ -84,24 +84,24 @@ export default function MovieDetail(props) {
                     blur={10} // default blur value is 10px
                     borderRadius={0} // default border radius value is 10px
                 >
-                    <div className='grid grid-cols-12  container mx-auto'>
-                        <div className='col-span-5 col-start-3 pb-10'>
-                            <div className='grid grid-cols-2'>
+                    <div className='xs:grid-cols-none  grid lg:grid-cols-12  container mx-auto'>
+                        <div className='lg:col-span-12 xl:col-span-10  pb-10'>
+                            <div className='xs:grid-cols-none  grid lg:grid-cols-2'>
                                 <img src={movieDetail.hinhAnh} alt={movieDetail.hinhAnh} className='w-full h-full' />
                                 <div className=' text-white ml-5 my-7'>
-                                    <p className='text-sm'>Ngay Chieu: <span>{thoiGianChieu}</span></p>
+                                    <p className='text-sm'>Show date: <span>{thoiGianChieu}</span></p>
                                     <p className='text-5xl'>{movieDetail.tenPhim}</p>
                                     <div>
                                         <p className='text-lg my-10'>{movieDetail.moTa}</p>
                                     </div>
                                     <div className="text-lg flex justify-items-center items-center">
-                                        <p className=" text-lg mb-0 mr-4"> Trang Thai:</p>
-                                        {movieDetail.danhChieu ? <div>Dang Chieu</div> : <div>Sap Chieu</div>}
+                                        <p className=" text-lg mb-0 mr-4">Status:</p>
+                                        {movieDetail.danhChieu ? <div>Now showing</div> : <div>Coming Soon</div>}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='col-span-4 mx-auto my-auto text-center'>
+                        <div className='xs:hidden xl:block xl:col-span-2 mx-auto my-auto text-center'>
                             <div className={`c100 p${movieDetail.danhGia * 10} big green`} style={{ margin: '0 auto' }}>
                                 <span className='text-white'>{movieDetail.danhGia * 10}%</span>
                                 <div className="slice">
@@ -122,12 +122,6 @@ export default function MovieDetail(props) {
                                         {renderTheatherSystem()}
                                     </Tabs>
                                 </div>
-                            </TabPane>
-                            <TabPane tab="Thong Tin" key="2">
-                                Thong Tin
-                            </TabPane>
-                            <TabPane tab="Danh Gia" key="3">
-                                Danh Gia
                             </TabPane>
                         </Tabs>
                     </div>
